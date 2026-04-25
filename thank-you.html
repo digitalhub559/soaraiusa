@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful - SoarAI Pro</title>
+    <meta name="description" content="Thank you for your purchase. Your Pro report is being prepared and will be delivered to your email.">
+    <meta name="robots" content="noindex, nofollow">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RSSJS9H252"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RSSJS9H252');
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #1a1a2e;
+            --blue: #0066FF;
+            --purple: #7c3aed;
+            --green: #0A8754;
+            --light-gray: #f8f9fa;
+            --dark-gray: #2d2d44;
+            --text: #1a1a2e;
+            --text-light: #666;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--light-gray);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e0e0e0;
+            padding: 1rem 2rem;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--purple);
+        }
+
+        /* Main content */
+        .main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            max-width: 620px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--navy), var(--purple));
+            padding: 40px 32px;
+            text-align: center;
+        }
+
+        .checkmark {
+            width: 72px;
+            height: 72px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            animation: scaleIn 0.5s ease-out;
+        }
+
+        @keyframes scaleIn {
+            0% { transform: scale(0); opacity: 0; }
+            60% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .checkmark svg {
+            width: 36px;
+            height: 36px;
+            stroke: #4ade80;
+            stroke-width: 3;
+            fill: none;
+            animation: drawCheck 0.6s ease-out 0.3s both;
+        }
+
+        @keyframes drawCheck {
+            0% { stroke-dasharray: 50; stroke-dashoffset: 50; }
+            100% { stroke-dashoffset: 0; }
+        }
+
+        .card-header h1 {
+            color: white;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .card-header p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+        }
+
+        .card-body {
+            padding: 36px 32px;
+        }
+
+        .steps {
+            margin-bottom: 28px;
+        }
+
+        .steps h2 {
+            font-size: 1.1rem;
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 14px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .step:last-child {
+            border-bottom: none;
+        }
+
+        .step-number {
+            width: 32px;
+            height: 32px;
+            min-width: 32px;
+            background: linear-gradient(135deg, var(--purple), var(--blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .step-content h3 {
+            font-size: 0.95rem;
+            color: var(--navy);
+            margin-bottom: 2px;
+        }
+
+        .step-content p {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f0e6ff, #e6f0ff);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 28px;
+            text-align: center;
+        }
+
+        .highlight-box .icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .highlight-box h3 {
+            font-size: 1rem;
+            color: var(--purple);
+            margin-bottom: 4px;
+        }
+
+        .highlight-box p {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .info-note {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 8px;
+            padding: 14px 16px;
+            font-size: 0.85rem;
+            color: #92400e;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0052cc;
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--purple);
+            border: 2px solid var(--purple);
+        }
+
+        .btn-outline:hover {
+            background: var(--purple);
+            color: white;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+        }
+
+        footer a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        @media (max-width: 640px) {
+            .card-header {
+                padding: 30px 20px;
+            }
+            .card-body {
+                padding: 24px 20px;
+            }
+            .card-header h1 {
+                font-size: 1.4rem;
+            }
+            .actions {
+                flex-direction: column;
+            }
+            .actions .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="/" class="logo">Soar<span>AI</span></a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main">
+        <div class="card">
+            <!-- Header with checkmark animation -->
+            <div class="card-header">
+                <div class="checkmark">
+                    <svg viewBox="0 0 24 24">
+                        <polyline points="4 12 9 17 20 6" stroke-dasharray="50" />
+                    </svg>
+                </div>
+                <h1>Payment Successful!</h1>
+                <p>Thank you for choosing SoarAI Pro</p>
+            </div>
+
+            <!-- Body -->
+            <div class="card-body">
+
+                <!-- Highlight box -->
+                <div class="highlight-box">
+                    <div class="icon">&#9993;</div>
+                    <h3>Your Pro Report is Being Prepared</h3>
+                    <p>Our AI engine is generating your comprehensive report. You'll receive a detailed PDF at the email you provided during checkout.</p>
+                </div>
+
+                <!-- What happens next -->
+                <div class="steps">
+                    <h2>What happens next?</h2>
+
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>AI Analysis in Progress</h3>
+                            <p>Our AI is running a deep analysis of your website or campaign brief right now.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Pro Report Delivered via Email</h3>
+                            <p>Within 24 hours, you'll receive your comprehensive Pro PDF report at the email address you used during payment.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Start Implementing</h3>
+                            <p>Your report includes a prioritized roadmap so you know exactly what to do first for maximum impact.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Note -->
+                <div class="info-note">
+                    <strong>Didn't receive your report?</strong> Check your spam/promotions folder. The email comes from <strong>noreply@soaraiusa.com</strong>. If you still don't see it after 24 hours, contact us at <strong>hello@soaraiusa.com</strong>.
+                </div>
+
+                <!-- Action buttons -->
+                <div class="actions">
+                    <a href="/" class="btn btn-primary">Back to SoarAI</a>
+                    <a href="/blog/" class="btn btn-outline">Read Our Blog</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 SoarAI. <a href="/privacy-policy.html">Privacy</a> &middot; <a href="/terms-of-service.html">Terms</a> &middot; <a href="/refund-policy.html">Refund Policy</a></p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RSSJS9H252"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RSSJS9H252');
+    </script>
+    <meta name="description" content="Generate high-converting Google Ads copy in seconds with AI. Free ad copy generator . Headlines, descriptions, multiple variations. No copywriting experience needed.">
+    <meta name="keywords" content="free ad copy generator the US, AI Google Ads copy, ad copy generator , free Google Ads copy tool">
+    <meta name="author" content="SoarAI">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Free AI Ad Copy Generator for Google Ads — SoarAI">
+    <meta property="og:description" content="Generate high-converting Google Ads copy in seconds. Free tool . Headlines, descriptions, and multiple variations.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://soaraiusa.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Free AI Ad Copy Generator for Google Ads — SoarAI | Ad Copy in Seconds</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #f9f7ff;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: linear-gradient(135deg, #6b21a8 0%, #7c3aed 100%);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(107, 33, 168, 0.1);
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            display: inline-block;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #6b21a8 0%, #7c3aed 50%, #a78bfa 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 700px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #6b21a8;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #6b21a8;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            color: #7c3aed;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            font-weight: 500;
+        }
+
+        /* What You Get Section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(107, 33, 168, 0.08);
+            border-left: 4px solid #7c3aed;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(107, 33, 168, 0.15);
+        }
+
+        .benefit-card h3 {
+            color: #6b21a8;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .benefit-card p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* How It Works Section */
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .step {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(107, 33, 168, 0.08);
+            position: relative;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #6b21a8, #7c3aed);
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            color: #6b21a8;
+            margin-bottom: 1rem;
+        }
+
+        .step p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Industries Section */
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .industry-tag {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #e9d5ff;
+            color: #6b21a8;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 3px rgba(107, 33, 168, 0.05);
+        }
+
+        .industry-tag:hover {
+            background: linear-gradient(135deg, #6b21a8, #7c3aed);
+            color: white;
+            border-color: transparent;
+        }
+
+        /* Why AI Section */
+        .why-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .why-item {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .why-icon {
+            display: flex;
+            align-items: flex-start;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #6b21a8, #7c3aed);
+            color: white;
+            border-radius: 8px;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            font-weight: 700;
+        }
+
+        .why-content h3 {
+            color: #6b21a8;
+            margin-bottom: 0.5rem;
+        }
+
+        .why-content p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            margin-top: 2rem;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(107, 33, 168, 0.08);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #6b21a8, #7c3aed);
+            color: white;
+            padding: 1.5rem;
+            text-align: left;
+            font-weight: 700;
+        }
+
+        .comparison-table td {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e9d5ff;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f9f7ff;
+        }
+
+        .price-highlight {
+            background: linear-gradient(135deg, #dbeafe, #c7d2fe);
+            font-weight: 700;
+            color: #6b21a8;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(107, 33, 168, 0.05);
+        }
+
+        .faq-question {
+            background: #f9f7ff;
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #6b21a8;
+            transition: all 0.3s ease;
+            border-left: 4px solid #7c3aed;
+        }
+
+        .faq-question:hover {
+            background: #f3e8ff;
+        }
+
+        .faq-toggle {
+            color: #7c3aed;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            padding: 1.5rem;
+            color: #555;
+            line-height: 1.7;
+            display: none;
+            background: white;
+            border-top: 1px solid #e9d5ff;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        .faq-toggle.active {
+            transform: rotate(180deg);
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            background: linear-gradient(135deg, #6b21a8 0%, #7c3aed 50%, #a78bfa 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .final-cta h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .final-cta p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d1b4e;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        footer a {
+            color: #a78bfa;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+
+            .benefits-grid,
+            .steps-container,
+            .industries-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-button {
+                padding: 0.75rem 2rem;
+                font-size: 1rem;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="https://soaraiusa.com">SoarAI</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Generate High-Converting Google Ads Copy in Seconds</h1>
+        <p>Free AI-powered ad copy generator . Get headlines, descriptions, and multiple variations optimized for Google Ads. No copywriting experience needed.</p>
+        <a href="https://soaraiusa.com" class="cta-button">Start Generating Free Ad Copy</a>
+    </section>
+
+    <!-- What You Get Section -->
+    <section id="features">
+        <h2>What You Get</h2>
+        <p class="section-subtitle">AI-generated Google Ads copy tailored for your business</p>
+        
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <h3>Headlines (30 Characters)</h3>
+                <p>Multiple attention-grabbing headlines optimized for Google Ads character limits. Each variation is designed to improve click-through rates (CTR).</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Descriptions (90 Characters)</h3>
+                <p>Compelling description lines that sell your offer and drive conversions. Multiple variations let you test what resonates with your audience.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Multiple Ad Variations</h3>
+                <p>Get 5-10 different ad copy combinations to test and optimize. A/B testing has never been easier with AI-generated variations.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Industry-Tailored Messaging</h3>
+                <p>Our AI understands your industry. Generate ad copy that speaks directly to your target customers with relevant language and pain points.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Google Ads Optimized</h3>
+                <p>Every line respects Google Ads character limits and best practices. Copy and paste directly into your Google Ads account.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Download & Share</h3>
+                <p>Export your generated ad copy as text, CSV, or PDF. Share with your team, clients, or use across multiple campaigns.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works">
+        <h2>How It Works</h2>
+        <p class="section-subtitle">Three simple steps to generate your first ad copy</p>
+        
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Enter Business Details</h3>
+                <p>Tell us about your business, what you're selling, your unique value proposition, and your target industry. The more details, the better the copy.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>AI Generates Variations</h3>
+                <p>Our advanced AI analyzes your input and generates 5-10 high-converting ad copy variations optimized for Google Ads in seconds.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Copy & Use Immediately</h3>
+                <p>Copy your favorite variations directly into Google Ads, or download all options. Start running your campaigns right away.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries We Serve Section -->
+    <section id="industries">
+        <h2>Industries We Serve</h2>
+        <p class="section-subtitle">Ad copy generator for 14+ industries across the US</p>
+        
+        <div class="industries-grid">
+            <div class="industry-tag">Ecommerce</div>
+            <div class="industry-tag">Healthcare</div>
+            <div class="industry-tag">Real Estate</div>
+            <div class="industry-tag">Education</div>
+            <div class="industry-tag">SaaS/Tech</div>
+            <div class="industry-tag">Restaurants</div>
+            <div class="industry-tag">Legal Services</div>
+            <div class="industry-tag">Financial Services</div>
+            <div class="industry-tag">Travel & Tourism</div>
+            <div class="industry-tag">Manufacturing</div>
+            <div class="industry-tag">Retail</div>
+            <div class="industry-tag">Fitness & Wellness</div>
+            <div class="industry-tag">Automotive</div>
+            <div class="industry-tag">Home Services</div>
+        </div>
+    </section>
+
+    <!-- Why AI-Generated Ad Copy Section -->
+    <section id="why-ai">
+        <h2>Why AI-Generated Ad Copy?</h2>
+        <p class="section-subtitle">Save time, improve results, and scale your campaigns</p>
+        
+        <div class="why-list">
+            <div class="why-item">
+                <div class="why-icon">⏱️</div>
+                <div class="why-content">
+                    <h3>Saves Hours of Work</h3>
+                    <p>Generate multiple variations in seconds instead of spending hours brainstorming or hiring expensive copywriters.</p>
+                </div>
+            </div>
+            <div class="why-item">
+                <div class="why-icon">📊</div>
+                <div class="why-content">
+                    <h3>Data-Driven Approach</h3>
+                    <p>Our AI is trained on thousands of successful Google Ads campaigns. Every suggestion is backed by performance data.</p>
+                </div>
+            </div>
+            <div class="why-item">
+                <div class="why-icon">🔄</div>
+                <div class="why-content">
+                    <h3>Multiple Variations</h3>
+                    <p>Test different messaging angles simultaneously. A/B testing lets you find the highest-converting copy for your audience.</p>
+                </div>
+            </div>
+            <div class="why-item">
+                <div class="why-icon">✓</div>
+                <div class="why-content">
+                    <h3>Google Ads Optimized</h3>
+                    <p>Every headline and description respects character limits and follows Google Ads best practices automatically.</p>
+                </div>
+            </div>
+            <div class="why-item">
+                <div class="why-icon">🎯</div>
+                <div class="why-content">
+                    <h3>No Experience Needed</h3>
+                    <p>You don't need copywriting skills. Our AI handles the creativity while you focus on running your business.</p>
+                </div>
+            </div>
+            <div class="why-item">
+                <div class="why-icon">💰</div>
+                <div class="why-content">
+                    <h3>100% Free</h3>
+                    <p>No hidden charges, no premium plans, no credit cards required. Generate unlimited ad copy for free.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section id="comparison">
+        <h2>SoarAI vs Hiring a Copywriter</h2>
+        <p class="section-subtitle">Why smart businesses choose AI-powered tools</p>
+        
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Solution</th>
+                    <th>Cost</th>
+                    <th>Time</th>
+                    <th>Variations</th>
+                    <th>Quality</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Freelance Copywriter</strong></td>
+                    <td><span class="price-highlight">$2K–8K per project</span></td>
+                    <td>5-10 days</td>
+                    <td>1-2 versions</td>
+                    <td>Variable</td>
+                </tr>
+                <tr>
+                    <td><strong>Agency</strong></td>
+                    <td><span class="price-highlight">$5K+/month</span></td>
+                    <td>2-5 days</td>
+                    <td>2-3 versions</td>
+                    <td>Good</td>
+                </tr>
+                <tr>
+                    <td><strong>SoarAI</strong></td>
+                    <td><span class="price-highlight">Free</span></td>
+                    <td>Instantly</td>
+                    <td>5-10 versions</td>
+                    <td>AI-Optimized</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <h2>Frequently Asked Questions</h2>
+        <p class="section-subtitle">Everything you need to know about AI-generated ad copy</p>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>How does the AI generate ad copy specifically ?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Our AI is trained on successful Google Ads campaigns from businesses across all industries. It understands local buying behavior, cultural nuances, pricing expectations, and regional preferences. When you input your industry and business details, the AI generates copy tailored specifically to your target audiences and market conditions.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Can I use the generated Google Ads copy directly in my Google Ads account?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely! Every headline is optimized for the 30-character limit and every description respects the 90-character limit. You can copy and paste the variations directly into Google Ads. No editing needed, though you can always customize further based on your preferences.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>What if I don't like the ad copy variations generated?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>You can regenerate new variations as many times as you want. Try adjusting your input details (highlight different benefits, target different pain points, or emphasize different unique selling propositions) to get different results. The AI will generate fresh variations each time, allowing you to find messaging that resonates with your audience.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Is the AI ad copy generator free forever?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! SoarAI's ad copy generator is completely free with no hidden charges, premium tiers, or credit card requirements. Our mission is to provide free AI marketing tools . Generate unlimited ad copies, test variations, and scale your campaigns without any cost.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Can I use the generated ad copy on other platforms besides Google Ads?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! While optimized for Google Ads specifications, the generated headlines and descriptions work across multiple platforms including Facebook Ads, Instagram Ads, LinkedIn Ads, and other digital advertising channels. Some minor adjustments may be needed for platform-specific character limits or formatting.</p>
+                </div>
+            </section>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <h2>Ready to Generate Your Ad Copy?</h2>
+        <p>Join thousands of businesses using SoarAI to create high-converting ads instantly.</p>
+        <a href="https://soaraiusa.com" class="cta-button">Start Free Now — No Card Required</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>Powered by SoarAI — Free AI Marketing Tools </strong></p>
+        <p><a href="https://soaraiusa.com">Visit SoarAI</a> | Free tools for ecommerce, SaaS, healthcare, and more.</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">© 2026 SoarAI. All rights reserved.</p>
+    </footer>
+
+    <!-- Structured Data: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "SoarAI Free AI Ad Copy Generator",
+        "description": "Free AI-powered Google Ads copy generator . Generate headlines, descriptions, and multiple variations optimized for Google Ads.",
+        "url": "https://soaraiusa.com",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "1250"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "SoarAI",
+            "url": "https://soaraiusa.com"
+        }
+    }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How does the AI generate ad copy specifically ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Our AI is trained on successful Google Ads campaigns from businesses across all industries. It understands local buying behavior, cultural nuances, pricing expectations, and regional preferences."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I use the generated Google Ads copy directly in my Google Ads account?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Absolutely! Every headline is optimized for the 30-character limit and every description respects the 90-character limit. You can copy and paste the variations directly into Google Ads."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What if I don't like the ad copy variations generated?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You can regenerate new variations as many times as you want. Try adjusting your input details to get different results. The AI will generate fresh variations each time."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is the AI ad copy generator free forever?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! SoarAI's ad copy generator is completely free with no hidden charges, premium tiers, or credit card requirements. Generate unlimited ad copies, test variations, and scale your campaigns without any cost."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I use the generated ad copy on other platforms besides Google Ads?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! While optimized for Google Ads specifications, the generated headlines and descriptions work across multiple platforms including Facebook Ads, Instagram Ads, LinkedIn Ads, and other digital advertising channels."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <script>
+        function toggleFaq(element) {
+            const question = element;
+            const answer = question.nextElementSibling;
+            const toggle = question.querySelector('.faq-toggle');
+            
+            // Close other open items
+            document.querySelectorAll('.faq-answer.active').forEach(item => {
+                if (item !== answer) {
+                    item.classList.remove('active');
+                    item.previousElementSibling.querySelector('.faq-toggle').classList.remove('active');
+                }
+            });
+            
+            // Toggle current item
+            answer.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

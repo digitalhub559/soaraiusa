@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-Powered Ad Copy Generator - Get platform-ready ad copy in minutes">
+    <title>AI Ad Copy Generator - Create High-Converting Ads</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #3730a3 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at top right, rgba(124, 58, 237, 0.1), transparent),
+                        radial-gradient(circle at bottom left, rgba(37, 99, 235, 0.1), transparent);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            opacity: 0.95;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item p {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px;
+            }
+
+            .stats-row {
+                gap: 24px;
+                margin-top: 40px;
+                padding-top: 24px;
+            }
+
+            .stat-item p {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 600px;
+            margin: -60px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Form Card */
+        .form-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+            padding: 48px;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .form-card {
+                padding: 32px 24px;
+            }
+
+            .container {
+                margin: -40px auto 40px;
+            }
+        }
+
+        /* Progress Indicator */
+        .progress-container {
+            margin-bottom: 48px;
+        }
+
+        .progress-bar-wrapper {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+            gap: 12px;
+        }
+
+        .progress-step {
+            flex: 1;
+            height: 4px;
+            background: #e2e8f0;
+            border-radius: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-step.active {
+            background: #2563eb;
+        }
+
+        .progress-step.completed {
+            background: #10b981;
+        }
+
+        .progress-step.completed::after {
+            content: '✓';
+            position: absolute;
+            right: -20px;
+            top: -12px;
+            color: #10b981;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .progress-text {
+            font-size: 0.875rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .progress-text strong {
+            color: #2563eb;
+        }
+
+        /* Form Steps */
+        .form-steps {
+            position: relative;
+            min-height: 500px;
+        }
+
+        .form-step {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-step h2 {
+            font-size: 1.75rem;
+            margin-bottom: 8px;
+            color: #0f172a;
+        }
+
+        .form-step-description {
+            color: #64748b;
+            margin-bottom: 32px;
+            font-size: 0.95rem;
+        }
+
+        /* Form Groups */
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #0f172a;
+            font-size: 0.95rem;
+        }
+
+        .required::after {
+            content: ' *';
+            color: #ef4444;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="url"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: #0f172a;
+            transition: all 0.2s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="url"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            background: #f0f9ff;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+            line-height: 1.5;
+        }
+
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23475569' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 36px;
+            background-color: white;
+        }
+
+        /* Checkboxes */
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .checkbox-group {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .checkbox-item:hover {
+            border-color: #2563eb;
+            background: #f0f9ff;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #2563eb;
+            flex-shrink: 0;
+        }
+
+        .checkbox-item input[type="checkbox"]:checked {
+            accent-color: #2563eb;
+        }
+
+        .checkbox-item.checked {
+            border-color: #2563eb;
+            background: #eff6ff;
+        }
+
+        .checkbox-label {
+            margin: 0;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        /* Radio Buttons */
+        .radio-group {
+            display: grid;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .radio-item:hover {
+            border-color: #2563eb;
+            background: #f0f9ff;
+        }
+
+        .radio-item input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #2563eb;
+            flex-shrink: 0;
+        }
+
+        .radio-item.checked {
+            border-color: #2563eb;
+            background: #eff6ff;
+        }
+
+        .radio-label {
+            margin: 0;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        /* Platform Icons */
+        .platform-emoji {
+            font-size: 1.2rem;
+            margin-right: 6px;
+        }
+
+        /* Review Section */
+        .review-section {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            border: 1.5px solid #e2e8f0;
+        }
+
+        .review-section h3 {
+            font-size: 1rem;
+            margin-bottom: 16px;
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        .review-item {
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #cbd5e1;
+        }
+
+        .review-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .review-label {
+            font-weight: 600;
+            color: #64748b;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .review-value {
+            color: #0f172a;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        /* Agreement Checkbox */
+        .agreement-wrapper {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+        }
+
+        .agreement-wrapper .checkbox-item {
+            background: transparent;
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .agreement-wrapper .checkbox-item:hover {
+            background: transparent;
+            border: none;
+        }
+
+        .agreement-wrapper label {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #92400e;
+        }
+
+        /* Buttons */
+        .form-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 40px;
+        }
+
+        button {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            min-width: 120px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white;
+            flex: 1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+
+        .btn-secondary:hover {
+            background: #cbd5e1;
+        }
+
+        .btn-secondary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Loading State */
+        .btn-loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Modal/Processing */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            padding: 48px;
+            text-align: center;
+            max-width: 400px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #0f172a;
+        }
+
+        .modal-message {
+            font-size: 1rem;
+            color: #64748b;
+            margin-bottom: 32px;
+            min-height: 40px;
+            line-height: 1.5;
+        }
+
+        .modal-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid #e2e8f0;
+            border-top-color: #2563eb;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 24px;
+        }
+
+        /* Success Screen */
+        .success-screen {
+            display: none;
+            text-align: center;
+        }
+
+        .success-screen.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #d1fae5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 40px;
+        }
+
+        .success-screen h2 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: #0f172a;
+        }
+
+        .success-screen p {
+            color: #64748b;
+            margin-bottom: 32px;
+        }
+
+        .btn-done {
+            background: #10b981;
+            color: white;
+            width: 100%;
+        }
+
+        .btn-done:hover {
+            background: #059669;
+            box-shadow: 0 12px 24px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Error Handling */
+        .error-message {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 12px 14px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+            border-left: 4px solid #ef4444;
+        }
+
+        .field-error {
+            border-color: #ef4444 !important;
+        }
+
+        .field-error:focus {
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 50px 16px;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .form-card {
+                padding: 24px 16px;
+                border-radius: 12px;
+            }
+
+            .form-step h2 {
+                font-size: 1.5rem;
+            }
+
+            .checkbox-group,
+            .radio-group {
+                grid-template-columns: 1fr;
+            }
+
+            .form-actions {
+                flex-direction: column-reverse;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                min-width: auto;
+            }
+
+            .modal-content {
+                padding: 36px 24px;
+            }
+        }
+
+        /* Hidden content */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RSSJS9H252"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RSSJS9H252');
+</script>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>AI-Powered Ad Copy Generator</h1>
+            <p>Get platform-ready ad copy for Google, Meta, LinkedIn & TikTok in minutes — not days.</p>
+            <div class="stats-row">
+                <div class="stat-item">
+                    <p><strong>5+ Variations Per Platform</strong></p>
+                </div>
+                <div class="stat-item">
+                    <p><strong>4 Proven Frameworks</strong></p>
+                </div>
+                <div class="stat-item">
+                    <p><strong>Copy-Paste Ready</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Form Container -->
+    <div class="container">
+        <div class="form-card">
+            <!-- Progress Indicator -->
+            <div class="progress-container">
+                <div class="progress-bar-wrapper">
+                    <div class="progress-step active" id="progress-step-1"></div>
+                    <div class="progress-step" id="progress-step-2"></div>
+                    <div class="progress-step" id="progress-step-3"></div>
+                    <div class="progress-step" id="progress-step-4"></div>
+                </div>
+                <div class="progress-text">Step <strong id="current-step">1</strong> of 4</div>
+            </div>
+
+            <!-- Form -->
+            <form id="intakeForm">
+                <!-- Step 1: Business Basics -->
+                <div class="form-step active" id="step-1">
+                    <h2>Business Basics</h2>
+                    <p class="form-step-description">Tell us about your product or service</p>
+
+                    <div class="form-group">
+                        <label for="companyName" class="required">Company Name</label>
+                        <input type="text" id="companyName" name="companyName" required placeholder="Your company name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="websiteUrl">Website URL</label>
+                        <input type="url" id="websiteUrl" name="websiteUrl" placeholder="https://example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="industry" class="required">Industry</label>
+                        <select id="industry" name="industry" required>
+                            <option value="">Select an industry...</option>
+                            <option value="SaaS">SaaS</option>
+                            <option value="E-commerce">E-commerce</option>
+                            <option value="Financial Services">Financial Services</option>
+                            <option value="Healthcare">Healthcare</option>
+                            <option value="Education/Courses">Education/Courses</option>
+                            <option value="Professional Services">Professional Services</option>
+                            <option value="Real Estate">Real Estate</option>
+                            <option value="Food & Beverage">Food & Beverage</option>
+                            <option value="Travel">Travel</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="productName" class="required">Product/Service Name</label>
+                        <input type="text" id="productName" name="productName" required placeholder="What do you call it?">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="productDescription" class="required">Product/Service Description</label>
+                        <textarea id="productDescription" name="productDescription" required placeholder="Describe what you sell, who it's for, and the main problem it solves..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pricePoint">Price Point</label>
+                        <input type="text" id="pricePoint" name="pricePoint" placeholder="$XX/month or $XXX one-time">
+                    </div>
+                </div>
+
+                <!-- Step 2: Audience & Competition -->
+                <div class="form-step" id="step-2">
+                    <h2>Audience & Competition</h2>
+                    <p class="form-step-description">Help us understand your market</p>
+
+                    <div class="form-group">
+                        <label for="targetAudience" class="required">Target Audience</label>
+                        <textarea id="targetAudience" name="targetAudience" required placeholder="Describe your ideal customer: demographics, pain points, desires, what keeps them up at night..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="required">Current Marketing Channels</label>
+                        <div class="checkbox-group" id="marketingChannels">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="marketingChannels" value="Google Ads">
+                                <span class="checkbox-label">Google Ads</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="marketingChannels" value="Facebook/Instagram">
+                                <span class="checkbox-label">Facebook/Instagram</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="marketingChannels" value="LinkedIn">
+                                <span class="checkbox-label">LinkedIn</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="marketingChannels" value="TikTok">
+                                <span class="checkbox-label">TikTok</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="marketingChannels" value="YouTube">
+                                <span class="checkbox-label">YouTube</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="marketingChannels" value="Twitter/X">
+                                <span class="checkbox-label">Twitter/X</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="marketingChannels" value="Email">
+                                <span class="checkbox-label">Email</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="marketingChannels" value="None yet">
+                                <span class="checkbox-label">None yet</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="topCompetitors">Top 3 Competitors</label>
+                        <textarea id="topCompetitors" name="topCompetitors" placeholder="List competitor names or URLs..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="uniqueDifference" class="required">What makes you different?</label>
+                        <textarea id="uniqueDifference" name="uniqueDifference" required placeholder="Your unique selling points, advantages, what competitors can't match..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Step 3: Campaign Preferences -->
+                <div class="form-step" id="step-3">
+                    <h2>Campaign Preferences</h2>
+                    <p class="form-step-description">Customize your ad generation</p>
+
+                    <div class="form-group">
+                        <label class="required">Preferred Ad Platforms</label>
+                        <div class="checkbox-group" id="adPlatforms">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="adPlatforms" value="Google Ads">
+                                <span class="platform-emoji">🔍</span>
+                                <span class="checkbox-label">Google Ads</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="adPlatforms" value="Meta (Facebook/Instagram)">
+                                <span class="platform-emoji">📱</span>
+                                <span class="checkbox-label">Meta</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="adPlatforms" value="LinkedIn">
+                                <span class="platform-emoji">💼</span>
+                                <span class="checkbox-label">LinkedIn</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="adPlatforms" value="TikTok">
+                                <span class="platform-emoji">🎵</span>
+                                <span class="checkbox-label">TikTok</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="adPlatforms" value="All Platforms (Recommended)">
+                                <span class="platform-emoji">⭐</span>
+                                <span class="checkbox-label">All (Recommended)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="required">Campaign Goal</label>
+                        <div class="radio-group" id="campaignGoal">
+                            <label class="radio-item">
+                                <input type="radio" name="campaignGoal" value="Lead Generation" required>
+                                <span class="radio-label">Lead Generation</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="campaignGoal" value="Sales/Conversions">
+                                <span class="radio-label">Sales/Conversions</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="campaignGoal" value="Brand Awareness">
+                                <span class="radio-label">Brand Awareness</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="campaignGoal" value="App Installs">
+                                <span class="radio-label">App Installs</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="campaignGoal" value="Event Signups">
+                                <span class="radio-label">Event Signups</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="required">Preferred Tone</label>
+                        <div class="radio-group" id="preferredTone">
+                            <label class="radio-item">
+                                <input type="radio" name="preferredTone" value="Professional/Corporate" required>
+                                <span class="radio-label">Professional/Corporate</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="preferredTone" value="Friendly/Conversational">
+                                <span class="radio-label">Friendly/Conversational</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="preferredTone" value="Urgent/Direct">
+                                <span class="radio-label">Urgent/Direct</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="preferredTone" value="Educational/Helpful">
+                                <span class="radio-label">Educational/Helpful</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="preferredTone" value="Fun/Playful">
+                                <span class="radio-label">Fun/Playful</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="adBudget" class="required">Monthly Ad Budget Range</label>
+                        <select id="adBudget" name="adBudget" required>
+                            <option value="">Select budget range...</option>
+                            <option value="Under $1,000">Under $1,000</option>
+                            <option value="$1,000-$5,000">$1,000-$5,000</option>
+                            <option value="$5,000-$15,000">$5,000-$15,000</option>
+                            <option value="$15,000-$50,000">$15,000-$50,000</option>
+                            <option value="$50,000+">$50,000+</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="existingAdCopy">Any existing ad copy or examples?</label>
+                        <textarea id="existingAdCopy" name="existingAdCopy" placeholder="Paste any ads that have worked well or that you want us to riff on..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Step 4: Review & Submit -->
+                <div class="form-step" id="step-4">
+                    <h2>Review & Submit</h2>
+                    <p class="form-step-description">Verify your information and get your campaign</p>
+
+                    <div class="review-section">
+                        <h3>Business Information</h3>
+                        <div class="review-item">
+                            <div class="review-label">Company</div>
+                            <div class="review-value" id="review-company">—</div>
+                        </div>
+                        <div class="review-item">
+                            <div class="review-label">Product/Service</div>
+                            <div class="review-value" id="review-product">—</div>
+                        </div>
+                        <div class="review-item">
+                            <div class="review-label">Industry</div>
+                            <div class="review-value" id="review-industry">—</div>
+                        </div>
+                        <div class="review-item">
+                            <div class="review-label">Price Point</div>
+                            <div class="review-value" id="review-price">—</div>
+                        </div>
+                    </div>
+
+                    <div class="review-section">
+                        <h3>Campaign Details</h3>
+                        <div class="review-item">
+                            <div class="review-label">Platforms</div>
+                            <div class="review-value" id="review-platforms">—</div>
+                        </div>
+                        <div class="review-item">
+                            <div class="review-label">Goal</div>
+                            <div class="review-value" id="review-goal">—</div>
+                        </div>
+                        <div class="review-item">
+                            <div class="review-label">Tone</div>
+                            <div class="review-value" id="review-tone">—</div>
+                        </div>
+                        <div class="review-item">
+                            <div class="review-label">Budget</div>
+                            <div class="review-value" id="review-budget">—</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="emailAddress" class="required">Email Address</label>
+                        <input type="email" id="emailAddress" name="emailAddress" required placeholder="where@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fullName" class="required">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" required placeholder="Your name">
+                    </div>
+
+                    <div class="agreement-wrapper">
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="agreement" name="agreement" required>
+                            <span class="checkbox-label">I understand the ad copy will be generated by AI and may require human review before publishing</span>
+                        </label>
+                    </div>
+
+                    <div id="error-container"></div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="prevBtn" style="display: none;">← Back</button>
+                    <button type="button" class="btn-primary" id="nextBtn">Continue →</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Processing Modal -->
+    <div class="modal" id="processingModal">
+        <div class="modal-content">
+            <div class="modal-spinner"></div>
+            <h3 class="modal-title">Generating Campaign</h3>
+            <div class="modal-message" id="processingMessage">Analyzing your product...</div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="success-screen" id="successScreen">
+                <div class="success-icon">✓</div>
+                <h2>Campaign Generated!</h2>
+                <p id="successMessage">Your ad campaign has been generated with platform-ready copy across all selected platforms.</p>
+                <div id="resultActions" style="display:flex;flex-direction:column;gap:12px;margin-top:20px;">
+                    <button type="button" class="btn-primary" id="downloadPdfBtn" onclick="downloadPdf()" style="width:100%;">Download PDF Report</button>
+                    <button type="button" class="btn-secondary" id="viewResultsBtn" onclick="toggleResults()" style="width:100%;">View Results Inline</button>
+                    <button type="button" class="btn-done" onclick="location.reload()" style="width:100%;background:#f1f5f9;color:#334155;">Create Another Campaign</button>
+                </div>
+            </div>
+            <div id="inlineResults" style="display:none;max-height:60vh;overflow-y:auto;padding:20px;text-align:left;"></div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration — Change these URLs to your deployed backend
+        const API_URL = 'https://soarai.in/api/generate';
+        const REPORT_URL = '/api/download-report';
+
+        // Form state
+        let currentStep = 1;
+        const totalSteps = 4;
+        let campaignResult = null; // Stores the API response for PDF download
+        const formData = {
+            step1: {},
+            step2: {},
+            step3: {},
+            step4: {}
+        };
+
+        // Platform name mapping: form value → backend key
+        const PLATFORM_MAP = {
+            'Google Ads': 'google',
+            'Meta (Facebook/Instagram)': 'meta',
+            'LinkedIn': 'linkedin',
+            'TikTok': 'tiktok',
+            'All Platforms (Recommended)': 'all'
+        };
+
+        // Status messages for processing
+        const processingMessages = [
+            "Analyzing your product...",
+            "Selecting optimal frameworks...",
+            "Generating variations...",
+            "Self-critiquing copy...",
+            "Formatting deliverable..."
+        ];
+        let currentMessageIndex = 0;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            setupEventListeners();
+            updateButtonStates();
+        });
+
+        function setupEventListeners() {
+            // Next/Previous buttons
+            document.getElementById('nextBtn').addEventListener('click', handleNext);
+            document.getElementById('prevBtn').addEventListener('click', handlePrev);
+
+            // Checkbox styling
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    this.parentElement.classList.toggle('checked', this.checked);
+                });
+            });
+
+            // Radio button styling
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    document.querySelectorAll(`input[name="${this.name}"]`).forEach(r => {
+                        r.parentElement.classList.remove('checked');
+                    });
+                    this.parentElement.classList.add('checked');
+                });
+            });
+
+            // Form validation
+            document.getElementById('intakeForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Form will be submitted via handleNext from step 4
+            });
+        }
+
+        function handleNext() {
+            if (!validateStep(currentStep)) {
+                return;
+            }
+
+            saveStepData(currentStep);
+
+            if (currentStep === totalSteps) {
+                submitForm();
+            } else {
+                currentStep++;
+                showStep(currentStep);
+                updateProgressBar();
+                updateButtonStates();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function handlePrev() {
+            if (currentStep > 1) {
+                currentStep--;
+                showStep(currentStep);
+                updateProgressBar();
+                updateButtonStates();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function validateStep(step) {
+            const errorContainer = document.getElementById('error-container');
+            errorContainer.innerHTML = '';
+            let isValid = true;
+
+            const requiredFields = {
+                1: ['companyName', 'industry', 'productName', 'productDescription'],
+                2: ['targetAudience', 'uniqueDifference'],
+                3: ['adPlatforms', 'campaignGoal', 'preferredTone', 'adBudget'],
+                4: ['emailAddress', 'fullName', 'agreement']
+            };
+
+            const fieldsToCheck = requiredFields[step];
+
+            fieldsToCheck.forEach(fieldName => {
+                const field = document.getElementById(fieldName) || document.querySelector(`input[name="${fieldName}"]`) || document.querySelector(`select[name="${fieldName}"]`);
+
+                if (fieldName === 'agreement') {
+                    if (!document.getElementById('agreement').checked) {
+                        showError('Please agree to the terms');
+                        isValid = false;
+                    }
+                } else if (fieldName === 'adPlatforms' || fieldName === 'marketingChannels') {
+                    const checked = document.querySelectorAll(`input[name="${fieldName}"]:checked`);
+                    if (checked.length === 0) {
+                        showError(`Please select at least one option for ${fieldName}`);
+                        isValid = false;
+                    }
+                } else if (fieldName === 'campaignGoal' || fieldName === 'preferredTone') {
+                    const checked = document.querySelector(`input[name="${fieldName}"]:checked`);
+                    if (!checked) {
+                        showError(`Please select a ${fieldName}`);
+                        isValid = false;
+                    }
+                } else if (field) {
+                    if (!field.value.trim()) {
+                        field.classList.add('field-error');
+                        showError(`${getFieldLabel(fieldName)} is required`);
+                        isValid = false;
+                    } else {
+                        field.classList.remove('field-error');
+                    }
+                }
+            });
+
+            return isValid;
+        }
+
+        function showError(message) {
+            const errorContainer = document.getElementById('error-container');
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.textContent = message;
+            errorContainer.appendChild(errorDiv);
+        }
+
+        function getFieldLabel(fieldName) {
+            const labels = {
+                'companyName': 'Company Name',
+                'industry': 'Industry',
+                'productName': 'Product/Service Name',
+                'productDescription': 'Product/Service Description',
+                'targetAudience': 'Target Audience',
+                'uniqueDifference': 'What makes you different',
+                'emailAddress': 'Email Address',
+                'fullName': 'Full Name'
+            };
+            return labels[fieldName] || fieldName;
+        }
+
+        function saveStepData(step) {
+            if (step === 1) {
+                formData.step1 = {
+                    companyName: document.getElementById('companyName').value,
+                    websiteUrl: document.getElementById('websiteUrl').value,
+                    industry: document.getElementById('industry').value,
+                    productName: document.getElementById('productName').value,
+                    productDescription: document.getElementById('productDescription').value,
+                    pricePoint: document.getElementById('pricePoint').value
+                };
+            } else if (step === 2) {
+                const channels = Array.from(document.querySelectorAll('input[name="marketingChannels"]:checked')).map(c => c.value);
+                formData.step2 = {
+                    targetAudience: document.getElementById('targetAudience').value,
+                    marketingChannels: channels,
+                    topCompetitors: document.getElementById('topCompetitors').value,
+                    uniqueDifference: document.getElementById('uniqueDifference').value
+                };
+            } else if (step === 3) {
+                const platforms = Array.from(document.querySelectorAll('input[name="adPlatforms"]:checked')).map(c => c.value);
+                formData.step3 = {
+                    adPlatforms: platforms,
+                    campaignGoal: document.querySelector('input[name="campaignGoal"]:checked').value,
+                    preferredTone: document.querySelector('input[name="preferredTone"]:checked').value,
+                    adBudget: document.getElementById('adBudget').value,
+                    existingAdCopy: document.getElementById('existingAdCopy').value
+                };
+                // Update review section
+                updateReviewSection();
+            } else if (step === 4) {
+                formData.step4 = {
+                    emailAddress: document.getElementById('emailAddress').value,
+                    fullName: document.getElementById('fullName').value,
+                    agreement: document.getElementById('agreement').checked
+                };
+            }
+        }
+
+        function updateReviewSection() {
+            document.getElementById('review-company').textContent = formData.step1.companyName || '—';
+            document.getElementById('review-product').textContent = formData.step1.productName || '—';
+            document.getElementById('review-industry').textContent = formData.step1.industry || '—';
+            document.getElementById('review-price').textContent = formData.step1.pricePoint || '—';
+            document.getElementById('review-platforms').textContent = formData.step3.adPlatforms?.join(', ') || '—';
+            document.getElementById('review-goal').textContent = formData.step3.campaignGoal || '—';
+            document.getElementById('review-tone').textContent = formData.step3.preferredTone || '—';
+            document.getElementById('review-budget').textContent = formData.step3.adBudget || '—';
+        }
+
+        function showStep(step) {
+            for (let i = 1; i <= totalSteps; i++) {
+                const stepElement = document.getElementById(`step-${i}`);
+                if (i === step) {
+                    stepElement.classList.add('active');
+                } else {
+                    stepElement.classList.remove('active');
+                }
+            }
+            document.getElementById('current-step').textContent = step;
+        }
+
+        function updateProgressBar() {
+            for (let i = 1; i <= totalSteps; i++) {
+                const progressStep = document.getElementById(`progress-step-${i}`);
+                progressStep.classList.remove('active', 'completed');
+                if (i < currentStep) {
+                    progressStep.classList.add('completed');
+                } else if (i === currentStep) {
+                    progressStep.classList.add('active');
+                }
+            }
+        }
+
+        function updateButtonStates() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            // Show/hide previous button
+            if (currentStep > 1) {
+                prevBtn.style.display = 'block';
+            } else {
+                prevBtn.style.display = 'none';
+            }
+
+            // Update next button text
+            if (currentStep === totalSteps) {
+                nextBtn.innerHTML = '<span class="btn-loading">Generate My Campaign</span>';
+            } else {
+                nextBtn.innerHTML = 'Continue →';
+            }
+        }
+
+        async function submitForm() {
+            saveStepData(4);
+
+            // Disable button and show loading state
+            const nextBtn = document.getElementById('nextBtn');
+            nextBtn.disabled = true;
+
+            // Show processing modal
+            showProcessingModal();
+
+            // Map platform names from form values to backend keys
+            let platforms = (formData.step3.adPlatforms || []).map(p => PLATFORM_MAP[p] || p.toLowerCase());
+            // If "all" is selected, expand to all 4 platforms
+            if (platforms.includes('all')) {
+                platforms = ['google', 'meta', 'linkedin', 'tiktok'];
+            }
+
+            // Transform nested form data into flat structure matching backend API
+            const apiPayload = {
+                company_name: formData.step1.companyName,
+                product_name: formData.step1.productName,
+                product_description: formData.step1.productDescription,
+                target_audience: formData.step2.targetAudience,
+                industry: formData.step1.industry,
+                platforms: platforms,
+                campaign_goal: formData.step3.campaignGoal,
+                tone: formData.step3.preferredTone,
+                price_point: formData.step1.pricePoint || '',
+                competitors: formData.step2.topCompetitors || '',
+                differentiators: formData.step2.uniqueDifference || '',
+                budget: formData.step3.adBudget || '',
+                existing_copy: formData.step3.existingAdCopy || '',
+                client_email: formData.step4.emailAddress,
+                client_name: formData.step4.fullName
+            };
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(apiPayload)
+                });
+
+                if (!response.ok) {
+                    const errData = await response.json().catch(() => ({}));
+                    throw new Error(errData.error || `HTTP error! status: ${response.status}`);
+                }
+
+                campaignResult = await response.json();
+
+                // Handle async email delivery response
+                closeProcessingModal();
+                if (campaignResult.status === 'success') {
+                    // Show custom success message for email delivery
+                    const modal = document.getElementById('successModal');
+                    if (modal) {
+                        // Override modal content with email message
+                        const modalBody = modal.querySelector('.modal-body') || modal.querySelector('.modal-content') || modal;
+                        modalBody.innerHTML = `
+                            <div style="text-align:center;padding:40px 20px;">
+                                <div style="font-size:60px;margin-bottom:20px;">&#9993;</div>
+                                <h2 style="color:#6333CC;margin-bottom:12px;font-family:Inter,sans-serif;">Campaign Being Generated!</h2>
+                                <p style="color:#4b5563;font-size:16px;line-height:1.6;max-width:400px;margin:0 auto;">
+                                    ${campaignResult.message || 'Your ad copy is being generated and will be emailed to you shortly.'}
+                                </p>
+                                <p style="color:#9ca3af;margin-top:20px;font-size:14px;">
+                                    You can close this page. Check your inbox in a few minutes.
+                                </p>
+                                <button onclick="location.reload()"
+                                    style="margin-top:24px;padding:12px 32px;background:#6333CC;color:white;
+                                    border:none;border-radius:8px;font-size:15px;cursor:pointer;font-family:Inter,sans-serif;">
+                                    Create Another Campaign
+                                </button>
+                            </div>
+                        `;
+                        modal.classList.add('active');
+                        modal.style.display = 'flex';
+                    } else {
+                        // Fallback: replace the whole form area
+                        document.querySelector('.form-container').innerHTML = `
+                            <div style="text-align:center;padding:60px 20px;">
+                                <div style="font-size:60px;margin-bottom:20px;">&#9993;</div>
+                                <h2 style="color:#6333CC;">Campaign Being Generated!</h2>
+                                <p style="color:#4b5563;font-size:16px;">
+                                    ${campaignResult.message || 'Your ad copy is being generated and will be emailed to you shortly.'}
+                                </p>
+                                <button onclick="location.reload()"
+                                    style="margin-top:24px;padding:12px 32px;background:#6333CC;color:white;
+                                    border:none;border-radius:8px;font-size:15px;cursor:pointer;">
+                                    Create Another Campaign
+                                </button>
+                            </div>
+                        `;
+                    }
+                    return;
+                }
+
+                // Original flow for non-async responses
+                showSuccessModal();
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                closeProcessingModal();
+                showError('Error submitting form: ' + error.message);
+                nextBtn.disabled = false;
+            }
+        }
+
+        async function downloadPdf() {
+            if (!campaignResult) return;
+            const btn = document.getElementById('downloadPdfBtn');
+            btn.textContent = 'Generating PDF...';
+            btn.disabled = true;
+
+            try {
+                const response = await fetch(REPORT_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(campaignResult)
+                });
+
+                if (!response.ok) throw new Error('PDF generation failed');
+
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = (campaignResult.company || 'Campaign') + '_Ad_Report.pdf';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                a.remove();
+                btn.textContent = 'Downloaded!';
+            } catch (error) {
+                console.error('PDF download error:', error);
+                btn.textContent = 'Download Failed - Try Again';
+                btn.disabled = false;
+            }
+        }
+
+        function toggleResults() {
+            const container = document.getElementById('inlineResults');
+            if (container.style.display === 'none') {
+                container.style.display = 'block';
+                container.innerHTML = renderCampaignResults(campaignResult);
+                document.getElementById('viewResultsBtn').textContent = 'Hide Results';
+            } else {
+                container.style.display = 'none';
+                document.getElementById('viewResultsBtn').textContent = 'View Results Inline';
+            }
+        }
+
+        function renderCampaignResults(data) {
+            if (!data || data.status !== 'success') return '<p>No results available.</p>';
+
+            let html = '<h3 style="margin-bottom:12px;">Strategic Analysis</h3>';
+            html += '<p style="margin-bottom:16px;color:#475569;">' + (data.analysis || 'N/A').replace(/\n/g, '<br>') + '</p>';
+
+            const platformLabels = { google: 'Google Ads', meta: 'Meta (Facebook/Instagram)', linkedin: 'LinkedIn Ads', tiktok: 'TikTok Ads' };
+            const platforms = data.platforms || {};
+
+            for (const [key, platform] of Object.entries(platforms)) {
+                const variations = platform.variations || [];
+                html += '<h3 style="margin:16px 0 8px;color:#2563eb;">' + (platformLabels[key] || key) + ' (' + variations.length + ' variations)</h3>';
+
+                variations.forEach((v, i) => {
+                    html += '<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:12px;margin-bottom:8px;">';
+                    html += '<div style="display:flex;justify-content:space-between;margin-bottom:8px;"><strong>Variation ' + (i+1) + ' - ' + (v.framework || '') + '</strong><span>Score: ' + (v.score || '?') + '/10</span></div>';
+
+                    if (v.headlines && v.headlines.length) {
+                        html += '<div style="font-size:13px;color:#64748b;margin-bottom:4px;">HEADLINES</div>';
+                        v.headlines.forEach(h => { html += '<div style="margin-left:12px;font-weight:600;">' + h + '</div>'; });
+                    }
+                    if (v.primary_text) {
+                        html += '<div style="font-size:13px;color:#64748b;margin:8px 0 4px;">PRIMARY TEXT</div>';
+                        html += '<div style="margin-left:12px;background:white;padding:8px;border-radius:4px;">' + v.primary_text + '</div>';
+                    }
+                    if (v.descriptions && v.descriptions.length) {
+                        html += '<div style="font-size:13px;color:#64748b;margin:8px 0 4px;">DESCRIPTIONS</div>';
+                        v.descriptions.forEach(d => { html += '<div style="margin-left:12px;">' + d + '</div>'; });
+                    }
+                    if (v.rationale) {
+                        html += '<div style="font-size:12px;color:#64748b;font-style:italic;margin-top:8px;">' + v.rationale + '</div>';
+                    }
+                    html += '</div>';
+                });
+            }
+
+            if (data.top_recommendations) {
+                html += '<h3 style="margin:16px 0 8px;color:#7c3aed;">Top Recommendations</h3>';
+                html += '<p style="color:#475569;">' + data.top_recommendations.replace(/\n/g, '<br>') + '</p>';
+            }
+
+            return html;
+        }
+
+        function showProcessingModal() {
+            const modal = document.getElementById('processingModal');
+            modal.classList.add('active');
+
+            // Rotate through messages
+            currentMessageIndex = 0;
+            const messageInterval = setInterval(() => {
+                if (currentMessageIndex < processingMessages.length) {
+                    document.getElementById('processingMessage').textContent = processingMessages[currentMessageIndex];
+                    currentMessageIndex++;
+                } else {
+                    clearInterval(messageInterval);
+                }
+            }, 1200);
+        }
+
+        function closeProcessingModal() {
+            const modal = document.getElementById('processingModal');
+            modal.classList.remove('active');
+        }
+
+        function showSuccessModal() {
+            closeProcessingModal();
+            const modal = document.getElementById('successModal');
+            modal.classList.add('active');
+        }
+    </script>
+
+    <!--
+    ALTERNATIVE SETUP USING FORMSPREE:
+
+    If you prefer a simple, no-backend solution, you can use Formspree instead:
+
+    1. Create a free account at https://formspree.io
+    2. Create a new form and get your form endpoint (e.g., https://formspree.io/f/ABC123DEF)
+    3. Replace the API_URL at the top of the script with:
+       const API_URL = 'https://formspree.io/f/YOUR_FORM_ID';
+
+    4. Update the fetch request in submitForm() to include:
+       headers: {
+           'Content-Type': 'application/json',
+           'Accept': 'application/json'
+       }
+
+    5. Formspree will handle email delivery automatically
+
+    This is perfect for getting started quickly without setting up your own backend.
+    For production at scale, set up your own API endpoint following this JSON structure:
+    {
+        "business": { ... },
+        "market": { ... },
+        "campaign": { ... },
+        "contact": { ... },
+        "timestamp": "ISO string"
+    }
+    -->
+</body>
+</html>

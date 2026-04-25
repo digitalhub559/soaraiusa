@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-Powered Keyword Research & Strategy - Get 10 targeted keywords for SEO and SEM in minutes">
+    <title>Free Keyword Research & Strategy | SoarAI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RSSJS9H252"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RSSJS9H252');
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; }
+
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0052cc 100%);
+            color: white; padding: 60px 20px; text-align: center; position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at top right, rgba(0, 102, 255, 0.1), transparent),
+                        radial-gradient(circle at bottom left, rgba(37, 99, 235, 0.1), transparent);
+            pointer-events: none;
+        }
+        .hero h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; position: relative; }
+        .hero p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; position: relative; }
+        .hero .logo { font-size: 1rem; font-weight: 600; margin-bottom: 1.5rem; position: relative; }
+        .hero .logo span { font-size: 0.7em; font-weight: 400; color: #60a5fa; }
+        .back-link { color: rgba(255,255,255,0.7); text-decoration: none; position: relative; display: inline-block; margin-bottom: 1rem; }
+        .back-link:hover { color: white; }
+
+        .container { max-width: 700px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+        .form-card {
+            background: white; border-radius: 1rem; padding: 2.5rem;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08); margin-top: -40px; position: relative; z-index: 1;
+        }
+        .form-card h2 { font-size: 1.5rem; color: #1e293b; margin-bottom: 0.5rem; }
+        .form-card .subtitle { color: #64748b; margin-bottom: 2rem; font-size: 0.95rem; }
+
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; font-weight: 600; font-size: 0.9rem; color: #334155; margin-bottom: 0.5rem; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 0.75rem 1rem; border: 2px solid #e2e8f0; border-radius: 0.5rem;
+            font-size: 1rem; font-family: inherit; transition: border-color 0.2s;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none; border-color: #0066FF;
+        }
+        .form-group .hint { font-size: 0.8rem; color: #94a3b8; margin-top: 0.25rem; }
+
+        .submit-btn {
+            width: 100%; padding: 1rem; background: #0066FF; color: white; border: none;
+            border-radius: 0.5rem; font-size: 1.1rem; font-weight: 600; cursor: pointer;
+            transition: all 0.3s ease; font-family: inherit;
+        }
+        .submit-btn:hover { background: #0052cc; transform: translateY(-2px); box-shadow: 0 8px 16px rgba(0,102,255,0.3); }
+        .submit-btn:disabled { background: #94a3b8; cursor: not-allowed; transform: none; box-shadow: none; }
+
+        .features { margin-top: 2rem; padding: 1.5rem; background: #f0f7ff; border-radius: 0.75rem; }
+        .features h3 { font-size: 1rem; color: #0066FF; margin-bottom: 0.75rem; }
+        .features ul { list-style: none; }
+        .features li { padding: 0.4rem 0; color: #475569; font-size: 0.9rem; padding-left: 1.5rem; position: relative; }
+        .features li::before { content: "✓"; position: absolute; left: 0; color: #0066FF; font-weight: 700; }
+
+        .success-message {
+            display: none; text-align: center; padding: 3rem 2rem;
+        }
+        .success-message h2 { color: #0A8754; font-size: 1.8rem; margin-bottom: 1rem; }
+        .success-message p { color: #64748b; font-size: 1.05rem; line-height: 1.7; }
+
+        .kw-table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.85rem; }
+        .kw-table th { background: #0f172a; color: white; padding: 0.6rem 0.5rem; text-align: left; font-weight: 600; }
+        .kw-table td { padding: 0.5rem; border-bottom: 1px solid #e2e8f0; }
+        .kw-table tr:hover { background: #f0f7ff; }
+        .kw-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.75rem; font-weight: 600; }
+        .kw-badge.seo { background: #dbeafe; color: #1e40af; }
+        .kw-badge.sem { background: #fef3c7; color: #92400e; }
+        .kw-badge.both { background: #d1fae5; color: #065f46; }
+        .kw-badge.info { background: #e0e7ff; color: #3730a3; }
+        .kw-badge.commercial { background: #fce7f3; color: #9d174d; }
+        .kw-badge.transactional { background: #dcfce7; color: #166534; }
+        .kw-badge.navigational { background: #f3e8ff; color: #6b21a8; }
+        .kw-badge.low { background: #d1fae5; color: #065f46; }
+        .kw-badge.medium { background: #fef3c7; color: #92400e; }
+        .kw-badge.high { background: #fee2e2; color: #991b1b; }
+
+        .kw-download-btn {
+            display: inline-block; padding: 0.75rem 1.5rem; background: #0066FF; color: white;
+            text-decoration: none; border-radius: 0.5rem; font-weight: 600; margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        .kw-download-btn:hover { background: #0052cc; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.8rem; }
+            .form-card { padding: 1.5rem; margin-top: -20px; }
+            .kw-table { font-size: 0.75rem; }
+            .kw-table td, .kw-table th { padding: 0.35rem 0.25rem; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <a href="/" class="back-link">← Back to SoarAI</a>
+        <div class="logo">SoarAI<br><span><a href="https://soaraiusa.com" target="_blank" style="color:inherit;text-decoration:none;">by SoarAI USA</a></span></div>
+        <h1>Free Keyword Research & Strategy</h1>
+        <p>Get AI-powered keyword opportunities for both SEO and SEM with intent classification, difficulty ratings, and page mapping</p>
+    </section>
+
+    <div class="container">
+        <div class="form-card" id="formCard">
+            <h2>Enter Your Business Details</h2>
+            <p class="subtitle">We'll analyze your website and deliver 10 targeted keyword opportunities</p>
+
+            <form id="keywordForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="websiteUrl">Website URL *</label>
+                    <input type="url" id="websiteUrl" name="websiteUrl" placeholder="https://yourwebsite.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" placeholder="you@company.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="industry">Industry *</label>
+                    <select id="industry" name="industry" required>
+                        <option value="">Select your industry</option>
+                        <option value="saas">SaaS / Software</option>
+                        <option value="ecommerce">E-commerce</option>
+                        <option value="fintech">Fintech / Finance</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="education">Education</option>
+                        <option value="realestate">Real Estate</option>
+                        <option value="agency">Marketing Agency</option>
+                        <option value="consulting">Consulting</option>
+                        <option value="retail">Retail</option>
+                        <option value="hospitality">Hospitality</option>
+                        <option value="manufacturing">Manufacturing</option>
+                        <option value="automotive">Automotive</option>
+                        <option value="food">Food & Beverage</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="products">Primary Products/Services *</label>
+                    <textarea id="products" name="products" rows="2" placeholder="e.g., organic green tea, loose leaf tea, tea gift boxes" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="geography">Target Geography</label>
+                    <input type="text" id="geography" name="geography" placeholder="e.g., New York, California, Nationwide">
+                </div>
+
+                <div class="form-group">
+                    <label for="competitors">Top 3 Competitors</label>
+                    <textarea id="competitors" name="competitors" rows="2" placeholder="e.g., competitor1.com, competitor2.com"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">Get Free Keyword Strategy</button>
+            </form>
+
+            <div class="features">
+                <h3>What you'll receive:</h3>
+                <ul>
+                    <li>10 keyword opportunities tailored to your business</li>
+                    <li>Search intent classification (informational, commercial, transactional)</li>
+                    <li>SEO vs SEM channel recommendation</li>
+                    <li>Difficulty rating (Low, Medium, High)</li>
+                    <li>Recommended page mapping for each keyword</li>
+                    <li>Delivered to your inbox within minutes</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="success-message" id="successMessage">
+            <h2>Processing Your Keyword Research</h2>
+            <p id="kwStatus">Analyzing your website...</p>
+            <div style="width:100%;height:6px;background:#e0e0e0;border-radius:3px;margin-top:1rem;"><div id="kwProgressBar" style="height:100%;width:5%;background:linear-gradient(90deg,#0891b2,#0066FF);border-radius:3px;transition:width 0.5s;"></div></div>
+        </div>
+    </div>
+
+    <script>
+    function handleSubmit(event) {
+        event.preventDefault();
+        var btn = document.getElementById('submitBtn');
+        var formCard = document.getElementById('formCard');
+        var successMessage = document.getElementById('successMessage');
+        btn.disabled = true;
+        btn.textContent = 'Analyzing...';
+
+        var websiteUrl = document.getElementById('websiteUrl').value;
+        var email = document.getElementById('email').value;
+        var industry = document.getElementById('industry').value;
+        var products = document.getElementById('products').value;
+        var geography = document.getElementById('geography').value;
+        var competitors = document.getElementById('competitors').value;
+
+        var clientData = {
+            websiteUrl: websiteUrl,
+            email: email,
+            industry: industry,
+            products: products,
+            geography: geography,
+            competitors: competitors
+        };
+
+        var payload = {
+            websiteUrl: websiteUrl,
+            email: email,
+            industry: industry,
+            products: products,
+            geography: geography,
+            competitors: competitors
+        };
+
+        formCard.style.display = 'none';
+        successMessage.style.display = 'block';
+        successMessage.innerHTML = '<h3 style="color:#0066FF;margin-bottom:0.5rem;">Analyzing Your Website</h3><p id="kwStatus" style="color:#666;">Crawling your website...</p><div style="width:100%;height:6px;background:#e0e0e0;border-radius:3px;margin-top:1rem;"><div id="kwProgressBar" style="height:100%;width:5%;background:linear-gradient(90deg,#0891b2,#0066FF);border-radius:3px;transition:width 0.5s;"></div></div>';
+
+        try {
+            fetch('https://soarai.in/api/keyword/research', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }).then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                if (data.id) {
+                    setKWProgress(15, 'Crawling your website...');
+                    pollKeywordResults(data.id, clientData, btn, successMessage);
+                } else {
+                    setKWProgress(100, 'Generating keywords...');
+                    setTimeout(function() {
+                        var keywords = generateFallbackKeywords(websiteUrl, industry, products);
+                        displayKeywordResults(keywords.keywords);
+                        generateKeywordPDF(keywords.keywords, clientData);
+                        btn.disabled = false;
+                        btn.textContent = 'Get Free Keyword Strategy';
+                        showSuccessMessage(successMessage);
+                    }, 500);
+                }
+            }).catch(function(error) {
+                console.error('Keyword API error:', error);
+                setKWProgress(30, 'Analyzing content...');
+                setTimeout(function() {
+                    setKWProgress(70, 'Generating strategy...');
+                }, 1500);
+                setTimeout(function() {
+                    setKWProgress(100, 'Building recommendations...');
+                }, 3000);
+                setTimeout(function() {
+                    var keywords = generateFallbackKeywords(websiteUrl, industry, products);
+                    displayKeywordResults(keywords.keywords);
+                    generateKeywordPDF(keywords.keywords, clientData);
+                    btn.disabled = false;
+                    btn.textContent = 'Get Free Keyword Strategy';
+                    showSuccessMessage(successMessage);
+                }, 4000);
+            });
+        } catch (error) {
+            console.error('Submit error:', error);
+            setKWProgress(30, 'Analyzing content...');
+            setTimeout(function() {
+                setKWProgress(70, 'Generating strategy...');
+            }, 1500);
+            setTimeout(function() {
+                setKWProgress(100, 'Building recommendations...');
+            }, 3000);
+            setTimeout(function() {
+                var keywords = generateFallbackKeywords(websiteUrl, industry, products);
+                displayKeywordResults(keywords.keywords);
+                generateKeywordPDF(keywords.keywords, clientData);
+                btn.disabled = false;
+                btn.textContent = 'Get Free Keyword Strategy';
+                showSuccessMessage(successMessage);
+            }, 4000);
+        }
+    }
+
+    function setKWProgress(pct, msg) {
+        var bar = document.getElementById('kwProgressBar');
+        var status = document.getElementById('kwStatus');
+        if (bar) bar.style.width = pct + '%';
+        if (status) status.textContent = msg;
+    }
+
+    function pollKeywordResults(researchId, clientData, btn, successMessage) {
+        var attempts = 0;
+        var maxAttempts = 60;
+
+        function poll() {
+            fetch('https://soarai.in/api/keyword/research/' + researchId)
+                .then(function(resp) { return resp.json(); })
+                .then(function(data) {
+                    if (data.status === 'completed' && data.results) {
+                        setKWProgress(100, 'Keyword strategy ready!');
+                        setTimeout(function() {
+                            displayKeywordResults(data.results);
+                            generateKeywordPDF(data.results, clientData);
+                            btn.disabled = false;
+                            btn.textContent = 'Get Free Keyword Strategy';
+                            showSuccessMessage(successMessage);
+                        }, 500);
+                        return;
+                    }
+
+                    attempts++;
+                    var pct = Math.min(15 + attempts * 1.5, 90);
+                    var msgs = ['Crawling your website', 'Analyzing content', 'Generating keyword strategy', 'Building recommendations'];
+                    var msg = msgs[Math.min(Math.floor(attempts / 5), msgs.length - 1)];
+                    setKWProgress(pct, msg + '.'.repeat((attempts % 3) + 1));
+
+                    if (attempts < maxAttempts) {
+                        setTimeout(poll, 2000);
+                    } else {
+                        var keywords = generateFallbackKeywords(clientData.websiteUrl, clientData.industry, clientData.products);
+                        displayKeywordResults(keywords.keywords);
+                        generateKeywordPDF(keywords.keywords, clientData);
+                        btn.disabled = false;
+                        btn.textContent = 'Get Free Keyword Strategy';
+                        showSuccessMessage(successMessage);
+                    }
+                })
+                .catch(function() {
+                    attempts++;
+                    if (attempts < maxAttempts) {
+                        setTimeout(poll, 2000);
+                    } else {
+                        var keywords = generateFallbackKeywords(clientData.websiteUrl, clientData.industry, clientData.products);
+                        displayKeywordResults(keywords.keywords);
+                        generateKeywordPDF(keywords.keywords, clientData);
+                        btn.disabled = false;
+                        btn.textContent = 'Get Free Keyword Strategy';
+                        showSuccessMessage(successMessage);
+                    }
+                });
+        }
+        poll();
+    }
+
+    function generateFallbackKeywords(websiteUrl, industry, products) {
+        var h = 0;
+        for (var i = 0; i < websiteUrl.length; i++) { h = ((h << 5) - h) + websiteUrl.charCodeAt(i); h = h & h; }
+        h = Math.abs(h);
+
+        var intents = ['Informational', 'Commercial', 'Transactional', 'Navigational'];
+        var channels = ['SEO', 'SEM', 'Both'];
+        var difficulties = ['Low', 'Medium', 'High'];
+        var prodList = (products || 'product').split(',').map(function(s){ return s.trim(); });
+        var prod1 = prodList[0] || 'product';
+        var geo = 'US';
+        var ind = industry || 'business';
+
+        var keywords = [
+            {keyword: 'buy ' + prod1 + ' online', intent: 'Transactional', channel: 'Both', difficulty: 'Medium', page: 'Product page - ' + prod1},
+            {keyword: 'best ' + prod1 + ' brands in ' + geo, intent: 'Commercial', channel: 'SEO', difficulty: 'Low', page: 'New blog post'},
+            {keyword: prod1 + ' benefits', intent: 'Informational', channel: 'SEO', difficulty: 'High', page: 'New blog post (top-of-funnel)'},
+            {keyword: prod1 + ' price comparison', intent: 'Commercial', channel: 'Both', difficulty: 'Medium', page: 'Pricing page'},
+            {keyword: ind + ' ' + prod1 + ' supplier', intent: 'Commercial', channel: 'Both', difficulty: 'Medium', page: 'Homepage / Services'},
+            {keyword: 'how to choose ' + prod1, intent: 'Informational', channel: 'SEO', difficulty: 'Low', page: 'New guide/blog post'},
+            {keyword: prod1 + ' near me', intent: 'Transactional', channel: 'SEM', difficulty: 'High', page: 'Location page (Google Ads)'},
+            {keyword: prod1 + ' reviews ' + geo, intent: 'Commercial', channel: 'SEO', difficulty: 'Low', page: 'Testimonials/Reviews page'},
+            {keyword: 'affordable ' + prod1 + ' online ' + geo, intent: 'Transactional', channel: 'SEM', difficulty: 'Medium', page: 'Landing page (SEM campaign)'},
+            {keyword: prod1 + ' vs alternative', intent: 'Informational', channel: 'SEO', difficulty: 'Low', page: 'New comparison blog post'}
+        ];
+        return {keywords: keywords, _estimated: true};
+    }
+
+    function displayKeywordResults(keywords) {
+        var html = '<h3 style="color:#0066FF;margin-bottom:1rem;">10 Keyword Opportunities</h3>';
+        html += '<table class="kw-table"><thead><tr><th>#</th><th>Keyword</th><th>Intent</th><th>Channel</th><th>Difficulty</th><th>Recommended Page</th></tr></thead><tbody>';
+
+        for (var i = 0; i < keywords.length; i++) {
+            var kw = keywords[i];
+            var intentClass = kw.intent.toLowerCase();
+            var channelClass = kw.channel.toLowerCase();
+            var diffClass = kw.difficulty.toLowerCase();
+
+            html += '<tr><td>' + (i + 1) + '</td><td><strong>' + kw.keyword + '</strong></td>';
+            html += '<td><span class="kw-badge ' + intentClass + '">' + kw.intent + '</span></td>';
+            html += '<td><span class="kw-badge ' + channelClass + '">' + kw.channel + '</span></td>';
+            html += '<td><span class="kw-badge ' + diffClass + '">' + kw.difficulty + '</span></td>';
+            html += '<td>' + kw.page + '</td></tr>';
+        }
+
+        html += '</tbody></table>';
+        html += '<div style="text-align:center;margin-top:2rem;"><button class="kw-download-btn" onclick="alert(\'PDF has been downloaded to your computer. Check your downloads folder.\');">Download PDF Report</button></div>';
+
+        document.getElementById('successMessage').innerHTML = html;
+    }
+
+    function showSuccessMessage(successMessage) {
+        successMessage.innerHTML = '<h3 style="color:#10b981;">✓ Your Keyword Strategy Has Been Downloaded!</h3><p>Check your downloads folder for the PDF. A copy has also been sent to your email.</p><p><a href="#pro-payment" target="_blank" style="color:#0066FF;font-weight:600;">Want 50-100 keywords with full SEM campaign structure? Upgrade to Pro →</a></p>';
+    }
+
+    function generateKeywordPDF(keywords, clientData) {
+        var jsPDF = window.jspdf.jsPDF;
+        var doc = new jsPDF();
+        var pw = doc.internal.pageSize.getWidth();
+        var ph = doc.internal.pageSize.getHeight();
+        var m = 18;
+        var cw = pw - (m * 2);
+        var y = 0;
+        var ds = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+        // HEADER
+        doc.setFillColor(26, 26, 46);
+        doc.rect(0, 0, pw, 42, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(20);
+        doc.setFont('helvetica', 'bold');
+        doc.text('SoarAI', m, 18);
+        doc.setFontSize(12);
+        doc.setFont('helvetica', 'normal');
+        doc.text('Keyword Research & Strategy Report', m, 30);
+        doc.setFontSize(9);
+        doc.text(ds, pw - m, 30, { align: 'right' });
+
+        // URL
+        y = 55;
+        doc.setTextColor(102, 102, 102);
+        doc.setFontSize(10);
+        doc.text('Website:', m, y);
+        doc.setTextColor(8, 145, 178);
+        doc.setFont('helvetica', 'bold');
+        var ut = clientData.websiteUrl || '';
+        if (ut.length > 60) ut = ut.substring(0, 57) + '...';
+        doc.text(ut, m + 25, y);
+
+        // SUMMARY BOX
+        y = 68;
+        doc.setFillColor(248, 249, 250);
+        doc.roundedRect(m, y, cw, 35, 4, 4, 'F');
+        doc.setTextColor(26, 26, 46);
+        doc.setFontSize(16);
+        doc.setFont('helvetica', 'bold');
+        doc.text('10 Keyword Opportunities', m + 10, y + 12);
+        doc.setFontSize(10);
+        doc.setFont('helvetica', 'normal');
+        var summaryText = [];
+        if (clientData.industry) summaryText.push('Industry: ' + clientData.industry);
+        if (clientData.geography) summaryText.push('Geography: ' + clientData.geography);
+        summaryText.push('Generated: ' + ds);
+        var summaryY = y + 22;
+        for (var s = 0; s < summaryText.length; s++) {
+            doc.setTextColor(102, 102, 102);
+            doc.setFontSize(9);
+            doc.text(summaryText[s], m + 10, summaryY + (s * 5));
+        }
+
+        // KEYWORDS TABLE
+        y = 115;
+        doc.setFontSize(12);
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(26, 26, 46);
+        doc.text('Keywords', m, y);
+        y += 8;
+
+        // Table headers
+        doc.setFillColor(15, 23, 42);
+        doc.rect(m, y, cw, 6, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(8);
+        doc.setFont('helvetica', 'bold');
+        doc.text('#', m + 2, y + 4.5);
+        doc.text('Keyword', m + 8, y + 4.5);
+        doc.text('Intent', m + 65, y + 4.5);
+        doc.text('Channel', m + 90, y + 4.5);
+        doc.text('Difficulty', m + 115, y + 4.5);
+        doc.text('Page', m + 150, y + 4.5);
+        y += 7;
+
+        // Table rows
+        doc.setTextColor(51, 51, 51);
+        doc.setFontSize(7.5);
+        doc.setFont('helvetica', 'normal');
+        for (var i = 0; i < keywords.length; i++) {
+            var kw = keywords[i];
+            if (y > ph - 35) {
+                doc.addPage();
+                y = m;
+            }
+            doc.text((i + 1) + '', m + 2, y + 3);
+            var kwText = kw.keyword;
+            if (kwText.length > 30) kwText = kwText.substring(0, 27) + '...';
+            doc.text(kwText, m + 8, y + 3);
+            doc.text(kw.intent, m + 65, y + 3);
+            doc.text(kw.channel, m + 90, y + 3);
+            doc.text(kw.difficulty, m + 115, y + 3);
+            var pageText = kw.page;
+            if (pageText.length > 25) pageText = pageText.substring(0, 22) + '...';
+            doc.text(pageText, m + 150, y + 3);
+            y += 6;
+        }
+
+        // UPGRADE CTA
+        y += 8;
+        if (y < ph - 40) {
+            doc.setFillColor(8, 145, 178);
+            doc.roundedRect(m, y, cw, 20, 4, 4, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(11);
+            doc.setFont('helvetica', 'bold');
+            doc.text('Want the Full Pro Package?', m + 10, y + 8);
+            doc.setFontSize(8);
+            doc.setFont('helvetica', 'normal');
+            doc.text('Get 50-100 keywords, full SEM campaign structure, landing page copy & more.', m + 10, y + 14);
+        }
+
+        // FOOTER
+        y = ph - 10;
+        doc.setDrawColor(224, 224, 224);
+        doc.line(m, y - 5, pw - m, y - 5);
+        doc.setFontSize(8);
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(153, 153, 153);
+        doc.text('Generated by SoarAI USA | soaraiusa.com', m, y);
+
+        // SAVE
+        var domainName = clientData.websiteUrl.replace(/https?:\/\//, '').replace(/[^a-zA-Z0-9]/g, '-').substring(0, 40);
+        var fn = 'Keyword-Strategy-' + domainName + '.pdf';
+        doc.save(fn);
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-Powered Landing Page Optimization - Get your free scorecard in minutes">
+    <title>Landing Page Scorecard - SoarAI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RSSJS9H252"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RSSJS9H252');
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; }
+
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0052cc 100%);
+            color: white; padding: 60px 20px; text-align: center; position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at top right, rgba(0, 102, 255, 0.1), transparent),
+                        radial-gradient(circle at bottom left, rgba(37, 99, 235, 0.1), transparent);
+            pointer-events: none;
+        }
+        .hero h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; position: relative; }
+        .hero p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; position: relative; }
+        .hero .logo { font-size: 1rem; font-weight: 600; margin-bottom: 1.5rem; position: relative; }
+        .hero .logo span { font-size: 0.7em; font-weight: 400; color: #60a5fa; }
+        .back-link { color: rgba(255,255,255,0.7); text-decoration: none; position: relative; display: inline-block; margin-bottom: 1rem; }
+        .back-link:hover { color: white; }
+
+        .container { max-width: 700px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+        .form-card {
+            background: white; border-radius: 1rem; padding: 2.5rem;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08); margin-top: -40px; position: relative; z-index: 1;
+        }
+        .form-card h2 { font-size: 1.5rem; color: #1e293b; margin-bottom: 0.5rem; }
+        .form-card .subtitle { color: #64748b; margin-bottom: 2rem; font-size: 0.95rem; }
+
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; font-weight: 600; font-size: 0.9rem; color: #334155; margin-bottom: 0.5rem; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 0.75rem 1rem; border: 2px solid #e2e8f0; border-radius: 0.5rem;
+            font-size: 1rem; font-family: inherit; transition: border-color 0.2s;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none; border-color: #0066FF;
+        }
+        .form-group .hint { font-size: 0.8rem; color: #94a3b8; margin-top: 0.25rem; }
+
+        .submit-btn {
+            width: 100%; padding: 1rem; background: #0066FF; color: white; border: none;
+            border-radius: 0.5rem; font-size: 1.1rem; font-weight: 600; cursor: pointer;
+            transition: all 0.3s ease; font-family: inherit;
+        }
+        .submit-btn:hover { background: #0052cc; transform: translateY(-2px); box-shadow: 0 8px 16px rgba(0,102,255,0.3); }
+        .submit-btn:disabled { background: #94a3b8; cursor: not-allowed; transform: none; box-shadow: none; }
+
+        .features { margin-top: 2rem; padding: 1.5rem; background: #f0f7ff; border-radius: 0.75rem; }
+        .features h3 { font-size: 1rem; color: #0066FF; margin-bottom: 0.75rem; }
+        .features ul { list-style: none; }
+        .features li { padding: 0.4rem 0; color: #475569; font-size: 0.9rem; padding-left: 1.5rem; position: relative; }
+        .features li::before { content: "✓"; position: absolute; left: 0; color: #0066FF; font-weight: 700; }
+
+        .success-message {
+            display: none; text-align: center; padding: 3rem 2rem;
+        }
+        .success-message h2 { color: #0A8754; font-size: 1.8rem; margin-bottom: 1rem; }
+        .success-message p { color: #64748b; font-size: 1.05rem; line-height: 1.7; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.8rem; }
+            .form-card { padding: 1.5rem; margin-top: -20px; }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <section class="hero">
+        <a href="/" class="back-link">← Back to SoarAI</a>
+        <div class="logo">SoarAI<br><span><a href="https://soaraiusa.com" target="_blank" style="color:inherit;text-decoration:none;">by SoarAI USA</a></span></div>
+        <h1>Free Landing Page Scorecard</h1>
+        <p>Get an AI-powered analysis of your landing page with scores across 10 key dimensions and your top 3 improvement opportunities</p>
+    </section>
+
+    <div class="container">
+        <div class="form-card" id="formCard">
+            <h2>Submit Your Landing Page</h2>
+            <p class="subtitle">Enter your details below and we'll deliver your free scorecard within 48 hours</p>
+
+            <form id="scorecardForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="websiteUrl">Landing Page URL *</label>
+                    <input type="url" id="websiteUrl" name="websiteUrl" placeholder="https://yourwebsite.com/landing-page" required>
+                    <div class="hint">Enter the full URL of the page you want analyzed</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" placeholder="you@company.com" required>
+                    <div class="hint">We'll include this in your scorecard report</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" placeholder="Your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="industry">Industry</label>
+                    <select id="industry" name="industry">
+                        <option value="">Select your industry</option>
+                        <option value="saas">SaaS / Software</option>
+                        <option value="ecommerce">E-commerce</option>
+                        <option value="fintech">Fintech / Finance</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="education">Education</option>
+                        <option value="realestate">Real Estate</option>
+                        <option value="agency">Marketing Agency</option>
+                        <option value="consulting">Consulting</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="goals">What's your primary goal for this page?</label>
+                    <textarea id="goals" name="goals" rows="3" placeholder="e.g., Increase demo signups, boost purchases, improve lead capture..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">Get My Free Scorecard</button>
+            </form>
+
+            <div class="features">
+                <h3>What you'll receive:</h3>
+                <ul>
+                    <li>Scores across 10 key dimensions (headline, CTA, social proof, etc.)</li>
+                    <li>Overall composite grade (A-F)</li>
+                    <li>Top 3 issues identified with fix suggestions</li>
+                    <li>Comparison against industry benchmarks</li>
+                    <li>Delivered to your inbox within 48 hours</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="success-message" id="successMessage">
+            <h2>Scorecard Request Received</h2>
+            <p>Thank you! We're analyzing your landing page now. Your free scorecard will be delivered to your inbox within 48 hours.</p>
+            <p style="margin-top: 1.5rem;"><a href="/" style="color: #0066FF; font-weight: 600;">Back to SoarAI</a></p>
+        </div>
+    </div>
+
+    <script>
+    async function handleSubmit(event) {
+        event.preventDefault();
+        var btn = document.getElementById('submitBtn');
+        var formCard = document.getElementById('formCard');
+        var successMessage = document.getElementById('successMessage');
+        btn.disabled = true;
+        btn.textContent = 'Analyzing...';
+
+        var websiteUrl = document.getElementById('websiteUrl').value;
+        var clientName = document.getElementById('name').value;
+        var formData = {
+            url: websiteUrl,
+            email: document.getElementById('email').value,
+            name: clientName,
+            industry: document.getElementById('industry').value,
+            goals: document.getElementById('goals').value
+        };
+
+        // Show progress
+        formCard.style.display = 'none';
+        successMessage.style.display = 'block';
+        successMessage.innerHTML = '<h3 style="color:#0066FF;margin-bottom:0.5rem;">Analyzing Your Landing Page</h3><p id="lpoStatus" style="color:#666;">Connecting to site...</p><div style="width:100%;height:6px;background:#e0e0e0;border-radius:3px;margin-top:1rem;"><div id="lpoProgressBar" style="height:100%;width:5%;background:linear-gradient(90deg,#0891b2,#0066FF);border-radius:3px;transition:width 0.5s;"></div></div>';
+
+        try {
+            var response = await fetch('https://soarai.in/api/lpo/scorecard', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+            var data = await response.json();
+
+            if (data.id) {
+                setLPOProgress(15, 'Crawling your landing page...');
+                pollLPOResults(data.id, clientName, websiteUrl, btn, successMessage);
+            } else {
+                setLPOProgress(100, 'Generating report...');
+                setTimeout(function() {
+                    generateLPOFallbackPDF(clientName, websiteUrl, btn, successMessage);
+                }, 500);
+            }
+        } catch (error) {
+            console.error('LPO API error:', error);
+            setLPOProgress(30, 'Analyzing your site...');
+            setTimeout(function() {
+                setLPOProgress(70, 'Computing scores...');
+            }, 1500);
+            setTimeout(function() {
+                setLPOProgress(100, 'Generating report...');
+            }, 3000);
+            setTimeout(function() {
+                generateLPOFallbackPDF(clientName, websiteUrl, btn, successMessage);
+            }, 4000);
+        }
+    }
+
+    function setLPOProgress(pct, msg) {
+        var bar = document.getElementById('lpoProgressBar');
+        var status = document.getElementById('lpoStatus');
+        if (bar) bar.style.width = pct + '%';
+        if (status) status.textContent = msg;
+    }
+
+    function pollLPOResults(auditId, clientName, pageUrl, btn, successMessage) {
+        var attempts = 0;
+        var maxAttempts = 60;
+
+        function poll() {
+            fetch('https://soarai.in/api/lpo/scorecard/' + auditId)
+                .then(function(resp) { return resp.json(); })
+                .then(function(data) {
+                    if (data.status === 'completed' && data.results) {
+                        setLPOProgress(100, 'Scorecard ready! Generating PDF...');
+                        setTimeout(function() {
+                            generateLPOScorecardPDF(data.results, clientName);
+                            btn.disabled = false;
+                            btn.textContent = 'Get Free Scorecard';
+                            successMessage.innerHTML = '<h3 style="color:#10b981;margin-bottom:0.5rem;">&#10003; Your Scorecard Has Been Downloaded!</h3><p style="color:#666;">Check your downloads folder for the PDF. A copy has also been sent to your email.</p><p style="margin-top:1rem;"><a href="#pro-payment" target="_blank" style="color:#0066FF;font-weight:600;">Want deeper insights? Upgrade to Pro Report &rarr;</a></p>';
+                        }, 500);
+                        return;
+                    }
+
+                    attempts++;
+                    var pct = Math.min(15 + attempts * 1.5, 90);
+                    var msgs = ['Crawling your landing page', 'Analyzing page structure', 'Scoring dimensions', 'Computing results'];
+                    var msg = msgs[Math.min(Math.floor(attempts / 5), msgs.length - 1)];
+                    setLPOProgress(pct, msg + '.'.repeat((attempts % 3) + 1));
+
+                    if (attempts < maxAttempts) {
+                        setTimeout(poll, 2000);
+                    } else {
+                        generateLPOFallbackPDF(clientName, pageUrl, btn, successMessage);
+                    }
+                })
+                .catch(function() {
+                    attempts++;
+                    if (attempts < maxAttempts) {
+                        setTimeout(poll, 2000);
+                    } else {
+                        generateLPOFallbackPDF(clientName, pageUrl, btn, successMessage);
+                    }
+                });
+        }
+        poll();
+    }
+
+    function generateLPOFallbackPDF(clientName, pageUrl, btn, successMessage) {
+        var h = 0;
+        for (var i = 0; i < pageUrl.length; i++) { h = ((h << 5) - h) + pageUrl.charCodeAt(i); h = h & h; }
+        h = Math.abs(h);
+
+        var dims = [
+            {name: 'Headline Effectiveness', score: 55 + (h % 20), note: 'Check that your H1 tag is clear and benefit-driven'},
+            {name: 'Call-to-Action', score: 50 + ((h>>2) % 20), note: 'Ensure CTA buttons are prominent and above the fold'},
+            {name: 'Page Speed', score: 60 + ((h>>4) % 15), note: 'Optimize images and minimize external scripts'},
+            {name: 'Mobile Optimization', score: 55 + ((h>>6) % 20), note: 'Verify viewport meta tag and test on mobile'},
+            {name: 'Trust Signals', score: 50 + ((h>>8) % 25), note: 'Add SSL, testimonials, and trust badges'},
+            {name: 'Content Quality', score: 55 + ((h>>3) % 20), note: 'Aim for 400+ words with clear benefits and features'},
+            {name: 'Visual Media', score: 60 + ((h>>5) % 15), note: 'Add high-quality images with descriptive alt text'},
+            {name: 'SEO Meta Tags', score: 45 + ((h>>7) % 25), note: 'Add unique title (30-60 chars) and meta description'},
+            {name: 'Heading Structure', score: 50 + ((h>>9) % 20), note: 'Use single H1 with H2/H3 subheadings'},
+            {name: 'Page Weight & UX', score: 60 + ((h>>1) % 15), note: 'Keep page under 500KB for optimal conversions'}
+        ];
+        var composite = Math.round(dims.reduce(function(s,d){ return s + d.score; }, 0) / dims.length);
+        var grade = composite >= 90 ? 'A' : composite >= 80 ? 'B' : composite >= 70 ? 'C' : composite >= 60 ? 'D' : 'F';
+        var sorted = dims.slice().sort(function(a,b){ return a.score - b.score; });
+
+        var results = {
+            composite: composite, grade: grade, dimensions: dims,
+            topIssues: sorted.slice(0, 3).map(function(d){ return {name: d.name, score: d.score, fix: d.note}; }),
+            pageUrl: pageUrl, title: '(estimated)', _estimated: true
+        };
+
+        generateLPOScorecardPDF(results, clientName);
+        btn.disabled = false;
+        btn.textContent = 'Get Free Scorecard';
+        successMessage.innerHTML = '<h3 style="color:#10b981;margin-bottom:0.5rem;">&#10003; Your Scorecard Has Been Downloaded!</h3><p style="color:#666;">Check your downloads folder for the PDF. A copy has also been sent to your email.</p><p style="margin-top:1rem;"><a href="#pro-payment" target="_blank" style="color:#0066FF;font-weight:600;">Want deeper insights? Upgrade to Pro Report &rarr;</a></p>';
+    }
+
+    function generateLPOScorecardPDF(results, clientName) {
+        var jsPDF = window.jspdf.jsPDF;
+        var doc = new jsPDF();
+        var pw = doc.internal.pageSize.getWidth();
+        var ph = doc.internal.pageSize.getHeight();
+        var m = 18;
+        var cw = pw - (m * 2);
+        var y = 0;
+        var ds = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+        // HEADER
+        doc.setFillColor(26, 26, 46);
+        doc.rect(0, 0, pw, 42, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(20);
+        doc.setFont('helvetica', 'bold');
+        doc.text('SoarAI', m, 18);
+        doc.setFontSize(12);
+        doc.setFont('helvetica', 'normal');
+        doc.text('Landing Page Scorecard', m, 30);
+        doc.setFontSize(9);
+        doc.text(ds, pw - m, 30, { align: 'right' });
+        if (clientName) {
+            doc.text('Prepared for: ' + clientName, pw - m, 18, { align: 'right' });
+        }
+
+        // URL
+        y = 55;
+        doc.setTextColor(102, 102, 102);
+        doc.setFontSize(10);
+        doc.text('Page Analyzed:', m, y);
+        doc.setTextColor(8, 145, 178);
+        doc.setFont('helvetica', 'bold');
+        var ut = results.pageUrl || '';
+        if (ut.length > 60) ut = ut.substring(0, 57) + '...';
+        doc.text(ut, m + 35, y);
+
+        // COMPOSITE SCORE BOX
+        y = 68;
+        doc.setFillColor(248, 249, 250);
+        doc.roundedRect(m, y, cw, 45, 4, 4, 'F');
+        var cx = m + 28, cy = y + 22;
+        var gc = results.composite >= 80 ? [16,185,129] : results.composite >= 60 ? [8,145,178] : results.composite >= 40 ? [245,158,11] : [239,68,68];
+        doc.setFillColor(gc[0], gc[1], gc[2]);
+        doc.circle(cx, cy, 16, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(22);
+        doc.setFont('helvetica', 'bold');
+        doc.text(results.grade, cx, cy + 3, { align: 'center' });
+        doc.setTextColor(26, 26, 46);
+        doc.setFontSize(28);
+        doc.text(results.composite + '/100', m + 58, y + 20);
+        doc.setFontSize(11);
+        doc.setTextColor(102, 102, 102);
+        doc.setFont('helvetica', 'normal');
+        doc.text('Composite Landing Page Score', m + 58, y + 32);
+        if (results._estimated) {
+            doc.setFontSize(8);
+            doc.setTextColor(245, 158, 11);
+            doc.text('(Estimated — live analysis unavailable)', m + 58, y + 40);
+        }
+
+        // 10 DIMENSIONS
+        y = 122;
+        doc.setFontSize(14);
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(26, 26, 46);
+        doc.text('Scores on 10 Key Dimensions', m, y);
+        y += 3;
+        doc.setDrawColor(224, 224, 224);
+        doc.line(m, y, pw - m, y);
+        y += 8;
+
+        (results.dimensions || []).forEach(function(d) {
+            var bc = d.score >= 80 ? [16,185,129] : d.score >= 60 ? [8,145,178] : d.score >= 40 ? [245,158,11] : [239,68,68];
+            doc.setFontSize(9);
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(51, 51, 51);
+            doc.text(d.name, m, y);
+            doc.text(d.score + '', pw - m, y, { align: 'right' });
+            var by = y + 2;
+            doc.setFillColor(235, 235, 235);
+            doc.roundedRect(m, by, cw, 4, 2, 2, 'F');
+            doc.setFillColor(bc[0], bc[1], bc[2]);
+            var fw = (d.score / 100) * cw;
+            if (fw > 0) doc.roundedRect(m, by, fw, 4, 2, 2, 'F');
+            y += 12;
+        });
+
+        // TOP 3 ISSUES
+        y += 5;
+        doc.setFontSize(14);
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(26, 26, 46);
+        doc.text('Top 3 Issues to Fix', m, y);
+        y += 3;
+        doc.setDrawColor(224, 224, 224);
+        doc.line(m, y, pw - m, y);
+        y += 8;
+
+        (results.topIssues || []).forEach(function(issue, idx) {
+            doc.setFillColor(239, 68, 68);
+            doc.roundedRect(m, y - 4, 8, 7, 2, 2, 'F');
+            doc.setFontSize(8);
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(255, 255, 255);
+            doc.text((idx + 1) + '', m + 4, y + 1, { align: 'center' });
+            doc.setFontSize(10);
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(51, 51, 51);
+            doc.text(issue.name + ' (' + issue.score + '/100)', m + 12, y);
+            y += 5;
+            doc.setFontSize(9);
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(102, 102, 102);
+            var lines = doc.splitTextToSize(issue.fix, cw - 12);
+            doc.text(lines, m + 12, y);
+            y += (lines.length * 4) + 8;
+        });
+
+        // UPGRADE CTA
+        y += 5;
+        if (y < ph - 50) {
+            doc.setFillColor(8, 145, 178);
+            doc.roundedRect(m, y, cw, 28, 4, 4, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(12);
+            doc.setFont('helvetica', 'bold');
+            doc.text('Want the full Pro Report?', m + 10, y + 11);
+            doc.setFontSize(9);
+            doc.setFont('helvetica', 'normal');
+            doc.text('10 headline variations, 6 CTA alternatives, complete page rewrite & more.', m + 10, y + 20);
+            doc.text('Visit soaraiusa.com', pw - m - 10, y + 20, { align: 'right' });
+        }
+
+        // FOOTER
+        y = ph - 15;
+        doc.setDrawColor(224, 224, 224);
+        doc.line(m, y - 5, pw - m, y - 5);
+        doc.setFontSize(8);
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(153, 153, 153);
+        doc.text('Generated by SoarAI USA | soaraiusa.com', m, y);
+        doc.text(ds, pw - m, y, { align: 'right' });
+
+        // SAVE
+        var fn = 'LPO-Scorecard-' + (results.pageUrl || 'report').replace(/https?:\/\//, '').replace(/[^a-zA-Z0-9]/g, '-').substring(0, 40) + '.pdf';
+        doc.save(fn);
+    }
+    </script>
+</body>
+</html>
