@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /generate_pages.py
+
+Sitemap: https://soaraiusa.com/sitemap.xml

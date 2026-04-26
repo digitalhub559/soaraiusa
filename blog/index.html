@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoarAI Blog - SEO, Landing Page Optimization & Ad Copy Insights</title>
+    <meta name="description" content="Expert insights on SEO best practices, landing page optimization, ad copy frameworks, and conversion rate optimization. Practical guides for marketers.">
+    <link rel="canonical" href="https://soaraiusa.com/blog/">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+        }
+
+        /* CSS Variables */
+        :root {
+            --navy: #1a1a2e;
+            --blue: #0066FF;
+            --purple: #7c3aed;
+            --green: #0A8754;
+            --light-gray: #f8f9fa;
+            --border-gray: #e9ecef;
+            --text-gray: #666;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: white;
+            border-bottom: 1px solid var(--border-gray);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-logo:hover {
+            color: var(--blue);
+            transition: color 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-gray);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--blue);
+        }
+
+        .nav-links a.active {
+            color: var(--blue);
+            border-bottom: 2px solid var(--blue);
+            padding-bottom: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, #2d2d4e 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+        }
+
+        /* Main Content */
+        .main {
+            flex: 1;
+        }
+
+        .blog-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Article Grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .article-card {
+            background: white;
+            border: 1px solid var(--border-gray);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .article-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            border-color: var(--blue);
+            transform: translateY(-2px);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-gray);
+        }
+
+        .article-date {
+            font-weight: 500;
+        }
+
+        .read-time {
+            color: #999;
+        }
+
+        .article-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--navy);
+            line-height: 1.3;
+        }
+
+        .article-excerpt {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            display: inline-block;
+            color: var(--blue);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: var(--purple);
+            transform: translateX(3px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--navy);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0;
+            }
+
+            .nav-logo {
+                font-size: 1.25rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .blog-section {
+                padding: 2rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 0.5rem;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .article-card {
+                padding: 1.5rem;
+            }
+
+            .article-title {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Page structure */
+        html, body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+        }
+    </style>
+
+    <!-- Article Schema Markup (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "SoarAI Blog",
+        "description": "Expert insights on landing page optimization, ad copy, and conversion rate optimization",
+        "url": "https://soarai.com/blog/",
+        "mainEntity": {
+            "@type": "ItemList",
+            "itemListElement": [
+                {
+                    "@type": "BlogPosting",
+                    "@id": "#article-1",
+                    "headline": "The Complete Guide to Landing Page Optimization in 2026",
+                    "description": "Covers scoring frameworks, CRO principles, A/B testing, and conversion benchmarks.",
+                    "datePublished": "2026-02-08",
+                    "author": {
+                        "@type": "Organization",
+                        "name": "SoarAI"
+                    }
+                },
+                {
+                    "@type": "BlogPosting",
+                    "@id": "#article-2",
+                    "headline": "How to Write High-Converting Ad Copy for Every Platform",
+                    "description": "Master ad copy for Google Ads, Meta, LinkedIn, and TikTok with proven frameworks.",
+                    "datePublished": "2026-02-08",
+                    "author": {
+                        "@type": "Organization",
+                        "name": "SoarAI"
+                    }
+                },
+                {
+                    "@type": "BlogPosting",
+                    "@id": "#article-3",
+                    "headline": "Landing Page Conversion Benchmarks by Industry (2026 Data)",
+                    "description": "See how your conversion rate stacks up against industry averages.",
+                    "datePublished": "2026-02-08",
+                    "author": {
+                        "@type": "Organization",
+                        "name": "SoarAI"
+                    }
+                },
+                {
+                    "@type": "BlogPosting",
+                    "@id": "#article-4",
+                    "headline": "AIDA vs PAS vs BAB: Which Ad Copy Framework Converts Best?",
+                    "description": "Compare the three most popular copywriting frameworks with real examples.",
+                    "datePublished": "2026-02-08",
+                    "author": {
+                        "@type": "Organization",
+                        "name": "SoarAI"
+                    }
+                },
+                {
+                    "@type": "BlogPosting",
+                    "@id": "#article-5",
+                    "headline": "10 Landing Page Mistakes That Kill Your Conversion Rate",
+                    "description": "Avoid these common pitfalls that cost businesses thousands in lost revenue.",
+                    "datePublished": "2026-02-08",
+                    "author": {
+                        "@type": "Organization",
+                        "name": "SoarAI"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SRZ8MY7SL6"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SRZ8MY7SL6');
+</script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">SoarAI<br><span style="font-size:0.55em;font-weight:400;color:#0066FF;"><a href="https://soaraiusa.com" target="_blank" style="color:#0066FF;text-decoration:none;">by SoarAI</a></span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="index.html" class="active">Blog</a></li>
+                <li><a href="../index.html#services">Services</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-container">
+                <h1>SoarAI Blog</h1>
+                <p>Expert insights on landing page optimization, ad copy, and conversion rate optimization</p>
+            </div>
+        </section>
+
+        <!-- Blog Articles -->
+        <section class="blog-section">
+            <div class="articles-grid">
+                <!-- Article 1 -->
+                <article class="article-card">
+                    <div class="article-meta">
+                        <span class="article-date">February 2026</span>
+                        <span class="read-time">8 min read</span>
+                    </div>
+                    <h2 class="article-title">The Complete Guide to Landing Page Optimization in 2026</h2>
+                    <p class="article-excerpt">Covers scoring frameworks, CRO principles, A/B testing, and conversion benchmarks. Learn the essential strategies to transform your landing pages into high-converting assets that drive real business results.</p>
+                    <a href="landing-page-optimization-guide.html" class="read-more">Read More →</a>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="article-card">
+                    <div class="article-meta">
+                        <span class="article-date">February 2026</span>
+                        <span class="read-time">7 min read</span>
+                    </div>
+                    <h2 class="article-title">How to Write High-Converting Ad Copy for Every Platform</h2>
+                    <p class="article-excerpt">Master ad copy for Google Ads, Meta, LinkedIn, and TikTok with proven frameworks. Discover platform-specific strategies that increase click-through rates and reduce customer acquisition costs across all channels.</p>
+                    <a href="high-converting-ad-copy.html" class="read-more">Read More →</a>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="article-card">
+                    <div class="article-meta">
+                        <span class="article-date">February 2026</span>
+                        <span class="read-time">6 min read</span>
+                    </div>
+                    <h2 class="article-title">Landing Page Conversion Benchmarks by Industry (2026 Data)</h2>
+                    <p class="article-excerpt">See how your conversion rate stacks up against industry averages. Get data-driven insights for SaaS, e-commerce, fintech, and B2B sectors to set realistic performance targets.</p>
+                    <a href="landing-page-benchmarks.html" class="read-more">Read More →</a>
+                </article>
+
+                <!-- Article 4 -->
+                <article class="article-card">
+                    <div class="article-meta">
+                        <span class="article-date">February 2026</span>
+                        <span class="read-time">8 min read</span>
+                    </div>
+                    <h2 class="article-title">AIDA vs PAS vs BAB: Which Ad Copy Framework Converts Best?</h2>
+                    <p class="article-excerpt">Compare the three most popular copywriting frameworks with real examples. Understand when to use Attention-Interest-Desire-Action, Problem-Agitate-Solve, or Before-After-Bridge for maximum impact.</p>
+                    <a href="aida-vs-pas-vs-bab.html" class="read-more">Read More →</a>
+                </article>
+
+                <!-- Article 5 -->
+                <article class="article-card">
+                    <div class="article-meta">
+                        <span class="article-date">February 2026</span>
+                        <span class="read-time">9 min read</span>
+                    </div>
+                    <h2 class="article-title">10 Landing Page Mistakes That Kill Your Conversion Rate</h2>
+                    <p class="article-excerpt">Avoid these common pitfalls that cost businesses thousands in lost revenue. Learn what mistakes successful companies avoid and how to audit your landing pages for maximum conversion potential.</p>
+                    <a href="landing-page-mistakes.html" class="read-more">Read More →</a>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-meta">
+                        <span class="article-date">February 2026</span>
+                        <span class="read-time">18 min read</span>
+                    </div>
+                    <h2 class="article-title">The Complete Technical SEO Checklist for 2026</h2>
+                    <p class="article-excerpt">A 27-point checklist covering crawlability, Core Web Vitals, mobile-first indexing, structured data, and AI search readiness. Everything you need to audit your site's technical foundation.</p>
+                    <a href="technical-seo-checklist.html" class="read-more">Read More →</a>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-meta">
+                        <span class="article-date">February 2026</span>
+                        <span class="read-time">14 min read</span>
+                    </div>
+                    <h2 class="article-title">On-Page SEO Best Practices That Actually Improve Rankings in 2026</h2>
+                    <p class="article-excerpt">Master the on-page factors that matter most — from E-E-A-T content and keyword strategy to heading structure, internal linking, and optimizing for AI-powered search engines.</p>
+                    <a href="on-page-seo-best-practices.html" class="read-more">Read More →</a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 SoarAI. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
