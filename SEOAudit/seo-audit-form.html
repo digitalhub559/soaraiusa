@@ -1067,7 +1067,8 @@
                 body: JSON.stringify({
                     websiteUrl: websiteUrl,
                     email: email,
-                    auditType: 'free'
+                    auditType: 'free',
+                    source: 'soaraiusa'
                 })
             })
             .then(function(resp) { return resp.json(); })

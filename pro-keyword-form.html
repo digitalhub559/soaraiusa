@@ -271,7 +271,8 @@
             marketingBudget: document.getElementById('marketingBudget').value,
             channels: channels,
             competitors: document.getElementById('competitors').value,
-            _token: _proToken
+            _token: _proToken,
+            source: 'soaraiusa'
         };
 
         fetch('https://soarai.in/api/pro/keyword', {
