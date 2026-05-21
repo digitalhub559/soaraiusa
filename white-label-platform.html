@@ -32,9 +32,9 @@ html { scroll-behavior:smooth; }
 body { font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto',sans-serif; color:var(--text); line-height:1.6; overflow-x:hidden; }
 
 /* NAV */
-nav { position:fixed; top:0; width:100%; background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); border-bottom:1px solid rgba(0,0,0,0.08); z-index:1000; padding:1rem 2rem; }
+nav { position:fixed; top:0; left:0; right:0; background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); border-bottom:1px solid #e0e0e0; z-index:1000; padding:1rem 2rem; }
 nav-content { display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:0 auto; }
-.logo { font-size:1.5rem; font-weight:700; color:var(--navy); }
+.logo { font-size:1.5rem; font-weight:700; color:var(--navy); letter-spacing:-0.5px; }
 .logo a { font-size:0.7em; font-weight:400; color:var(--blue); text-decoration:none; }
 nav-buttons { display:flex; gap:1rem; align-items:center; }
 .btn { padding:0.75rem 1.5rem; border-radius:0.5rem; font-weight:600; font-size:0.95rem; text-decoration:none; transition:all 0.3s ease; cursor:pointer; border:none; display:inline-block; }
@@ -268,8 +268,8 @@ section .section-sub {
 footer { background:var(--navy); color:white; padding:3rem 2rem; text-align:center; }
 footer-content { max-width:1200px; margin:0 auto; }
 footer p { color:rgba(255,255,255,0.7); }
-.footer-links { display:flex; justify-content:center; gap:2rem; margin:1rem 0; flex-wrap:wrap; }
-.footer-links a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.9rem; }
+.footer-links { display:flex; justify-content:center; gap:2rem; margin:2rem 0; flex-wrap:wrap; }
+.footer-links a { color:rgba(255,255,255,0.7); text-decoration:none; transition:color 0.3s ease; }
 .footer-links a:hover { color:white; }
 
 /* RESPONSIVE */
@@ -307,6 +307,7 @@ footer p { color:rgba(255,255,255,0.7); }
     <div class="logo">SoarAI<br><span style="font-size:0.7em;font-weight:400;color:#0066FF;">AI-Powered Growth Agency</span></div>
     <nav-buttons>
       <a href="/" class="btn btn-secondary">Home</a>
+      <a href="/pricing.html#seo-pro" class="btn btn-secondary">Pricing</a>
       <a href="#services" class="btn btn-secondary">Services</a>
       <a href="/blog/" class="btn btn-secondary">Blog</a>
       <a href="https://calendly.com/wellingtonmarketers/soarai-demo" target="_blank" class="btn btn-primary">Schedule Demo</a>
@@ -561,11 +562,14 @@ footer p { color:rgba(255,255,255,0.7); }
     <p>&copy; 2026 SoarAI. All rights reserved.</p>
     <div class="footer-links">
       <a href="/">Home</a>
-      <a href="/white-label-platform.html">White Label Platform</a>
+      <a href="/#pricing">Services</a>
+      <a href="/pricing.html#seo-pro">Pricing</a>
+      <a href="/white-label-platform.html">White Label</a>
       <a href="/blog/">Blog</a>
-      <a href="mailto:hello@soaraiusa.com">Contact</a>
+      <a href="/#faq">FAQ</a>
+      <a href="mailto:wellingtonmarketers2017@gmail.com">Contact</a>
     </div>
-    <p style="font-size:0.85rem;color:rgba(255,255,255,0.6);">AI-powered marketing tools for agencies and brands.</p>
+    <p style="font-size:0.85rem;color:rgba(255,255,255,0.6);">Helping brands optimize landing pages and generate high-converting ad copy.</p>
   </footer-content>
   <p style="margin-top:1rem;font-size:0.85rem;"><a href="/privacy-policy.html" style="color:rgba(255,255,255,0.7);margin-right:1.5rem;">Privacy Policy</a><a href="/terms-of-service.html" style="color:rgba(255,255,255,0.7);margin-right:1.5rem;">Terms of Service</a><a href="/refund-policy.html" style="color:rgba(255,255,255,0.7);">Refund Policy</a></p>
 </footer>
