@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro Service — AI Marketing Tools | SoarAI</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f3460 100%);
+            padding: 48px 24px 56px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(0,102,255,0.08), transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(124,58,237,0.06), transparent 50%);
+        }
+        .header-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+        .partner-logos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .partner-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+        .partner-logo span { color: #0066FF; }
+        .partner-x { color: rgba(255,255,255,0.4); font-size: 1.2rem; font-weight: 400; }
+        .header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+        .header p { font-size: 1.1rem; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto; }
+
+        /* Main */
+        .main { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* Section */
+        .section { margin: 48px 0; }
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #0066FF;
+            margin-bottom: 8px;
+        }
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+        .section-desc { color: #64748b; font-size: 1rem; margin-bottom: 32px; max-width: 600px; }
+
+        /* Tool Cards */
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .tool-card {
+            background: #fff;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 28px 24px;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .tool-card:hover {
+            border-color: #0066FF;
+            box-shadow: 0 8px 30px rgba(0,102,255,0.08);
+            transform: translateY(-3px);
+        }
+        .tool-icon {
+            width: 48px; height: 48px;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+        }
+        .tool-card h3 { font-size: 1.15rem; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
+        .tool-card p { font-size: 0.92rem; color: #64748b; margin-bottom: 16px; flex-grow: 1; }
+        .tool-badge {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 100px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .badge-free { background: #d1fae5; color: #065f46; }
+        .badge-pro { background: #ede9fe; color: #5b21b6; }
+        .tool-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+        .btn-blue { background: #0066FF; color: #fff; }
+        .btn-blue:hover { background: #0052cc; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,102,255,0.25); }
+        .btn-purple { background: #7c3aed; color: #fff; }
+        .btn-purple:hover { background: #6d28d9; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(124,58,237,0.25); }
+
+        /* Promo Section */
+        .promo-section {
+            background: linear-gradient(135deg, #faf5ff, #ede9fe);
+            border: 2px solid #c4b5fd;
+            border-radius: 16px;
+            padding: 32px;
+            margin: 48px 0;
+            text-align: center;
+        }
+        .promo-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            color: #5b21b6;
+            margin-bottom: 8px;
+        }
+        .promo-section p { color: #6b21a8; margin-bottom: 20px; }
+        .promo-code-display {
+            display: inline-block;
+            background: #fff;
+            border: 2px dashed #a78bfa;
+            border-radius: 10px;
+            padding: 12px 32px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #5b21b6;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        .promo-code-display:hover { background: #f5f3ff; border-color: #7c3aed; }
+        .promo-code-display .copy-hint {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #a78bfa;
+            letter-spacing: 0;
+            margin-top: 4px;
+        }
+        .promo-details {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #6b21a8;
+        }
+        .promo-details span { display: flex; align-items: center; gap: 6px; }
+
+        /* How It Works */
+        .steps-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+        .step-card {
+            text-align: center;
+            padding: 24px 16px;
+        }
+        .step-num {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            background: #0066FF;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+        .step-card h4 { font-size: 1rem; color: #0f172a; margin-bottom: 6px; }
+        .step-card p { font-size: 0.88rem; color: #64748b; }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 32px 24px;
+            color: #94a3b8;
+            font-size: 0.85rem;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 48px;
+        }
+        .footer a { color: #64748b; text-decoration: none; }
+        .footer a:hover { color: #0066FF; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header { padding: 36px 20px 44px; }
+            .partner-logos { flex-direction: column; gap: 8px; }
+            .tool-grid { grid-template-columns: 1fr; }
+            .promo-section { padding: 24px 16px; }
+            .promo-code-display { font-size: 1.2rem; padding: 10px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-content">
+        <div class="partner-logos">
+            <span class="partner-logo">Soar<span>AI</span></span>
+        </div>
+        <h1>AI-Powered Marketing Tools for Your Team</h1>
+        <p>Run SEO audits, generate ad copy, research keywords, optimize landing pages, and create social content — all in one place.</p>
+    </div>
+</div>
+
+<div class="main">
+
+    <!-- Free Tools -->
+    <div class="section">
+        <div class="section-label">Free Tools</div>
+        <div class="section-title">Run Unlimited Audits & Generate Content</div>
+        <div class="section-desc">No signup, no credit card, no limits. Use these tools on any client site, any time.</div>
+
+        <div class="tool-grid">
+            <div class="tool-card">
+                <div class="tool-icon" style="background:#e6f0ff;">&#x1F50D;</div>
+                <span class="tool-badge badge-free">Free</span>
+                <h3>SEO & GEO Audit</h3>
+                <p>Technical SEO audit with AI overview optimization scoring. Covers meta tags, structured data, Core Web Vitals, and AI search readiness.</p>
+                <a href="https://soarai.in/SEOAudit/seo-audit-form.html?source=proservice" class="tool-btn btn-blue">Run SEO Audit</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon" style="background:#fef3c7;">&#x1F511;</div>
+                <span class="tool-badge badge-free">Free</span>
+                <h3>AI Keyword Research</h3>
+                <p>Discover 10 high-opportunity keywords with search volume, difficulty, CPC, and content recommendations tailored to your niche.</p>
+                <a href="https://soarai.in/keyword-research-form.html?source=proservice" class="tool-btn btn-blue">Research Keywords</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon" style="background:#d1fae5;">&#x1F4CA;</div>
+                <span class="tool-badge badge-free">Free</span>
+                <h3>Landing Page Optimization</h3>
+                <p>10-dimension LPO scorecard analyzing hero sections, CTAs, social proof, mobile UX, page speed, and conversion friction points.</p>
+                <a href="https://soarai.in/lpo-scorecard-form.html?source=proservice" class="tool-btn btn-blue">Score a Landing Page</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon" style="background:#ede9fe;">&#x1F4DD;</div>
+                <span class="tool-badge badge-free">Free</span>
+                <h3>Ad Copy Generator</h3>
+                <p>Generate platform-ready ad copy for Google, Meta, LinkedIn, and TikTok using AIDA, PAS, and BAB frameworks.</p>
+                <a href="https://soarai.in/AdCopy/ac-agent-form.html?source=proservice" class="tool-btn btn-blue">Generate Ad Copy</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon" style="background:#fce7f3;">&#x1F4F1;</div>
+                <span class="tool-badge badge-free">Free</span>
+                <h3>Social Post Generator</h3>
+                <p>Create organic social content for Instagram, LinkedIn, X, TikTok, and Facebook with platform-specific formatting and hashtag strategy.</p>
+                <a href="https://soaraiusa.com/social-post-form.html?source=proservice" class="tool-btn btn-blue">Generate Social Posts</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Promo Code Section -->
+    <div class="promo-section">
+        <h2>Your Exclusive Pro Access</h2>
+        <p>Use the code below to unlock Pro-tier reports — no payment required.</p>
+        <div class="promo-code-display" onclick="copyCode()" id="promoCode">
+            CROSSMEDIA2025
+            <span class="copy-hint" id="copyHint">Click to copy</span>
+        </div>
+        <div class="promo-details">
+            <span>&#x2705; 10 free runs per tool</span>
+            <span>&#x1F4E7; Reports emailed as PDF</span>
+            <span>&#x1F512; Tracked per email address</span>
+        </div>
+    </div>
+
+    <!-- Pro Tools -->
+    <div class="section">
+        <div class="section-label">Pro Tools</div>
+        <div class="section-title">Deep-Dive Reports for Client Presentations</div>
+        <div class="section-desc">Full-length analyst-grade reports, perfect for pitches and strategy decks. Enter the promo code when prompted.</div>
+
+        <div class="tool-grid">
+            <div class="tool-card">
+                <div class="tool-icon" style="background:#e6f0ff;">&#x1F50D;</div>
+                <span class="tool-badge badge-pro">Pro</span>
+                <h3>Pro SEO Audit</h3>
+                <p>Comprehensive 20+ page SEO report with competitor benchmarking, crawl analysis, and prioritized fix roadmap.</p>
+                <a href="https://soaraiusa.com/pro-seo-form.html?promo=CROSSMEDIA2025&source=proservice" class="tool-btn btn-purple">Run Pro SEO Audit</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon" style="background:#fef3c7;">&#x1F511;</div>
+                <span class="tool-badge badge-pro">Pro</span>
+                <h3>Pro Keyword Strategy</h3>
+                <p>50-100 keyword strategy with content calendar, competitor gap analysis, and ROI projections per keyword cluster.</p>
+                <a href="https://soaraiusa.com/pro-keyword-form.html?promo=CROSSMEDIA2025&source=proservice" class="tool-btn btn-purple">Run Pro Keywords</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon" style="background:#d1fae5;">&#x1F4CA;</div>
+                <span class="tool-badge badge-pro">Pro</span>
+                <h3>Pro LPO Report</h3>
+                <p>Full conversion rate optimization report with wireframe-level redesign recommendations, heatmap analysis, and A/B test suggestions.</p>
+                <a href="https://soaraiusa.com/pro-lpo-form.html?promo=CROSSMEDIA2025&source=proservice" class="tool-btn btn-purple">Run Pro LPO</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon" style="background:#ede9fe;">&#x1F4DD;</div>
+                <span class="tool-badge badge-pro">Pro</span>
+                <h3>Pro Ad Copy Campaign</h3>
+                <p>Full multi-platform campaign with 20+ ad variations, audience targeting recommendations, and A/B testing strategy.</p>
+                <a href="https://soaraiusa.com/pro-adcopy-form.html?promo=CROSSMEDIA2025&source=proservice" class="tool-btn btn-purple">Run Pro Ad Copy</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works -->
+    <div class="section">
+        <div class="section-title">How It Works</div>
+        <div class="steps-row">
+            <div class="step-card">
+                <div class="step-num">1</div>
+                <h4>Pick a Tool</h4>
+                <p>Choose any free tool above to run instantly, or select a Pro tool for deeper analysis.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">2</div>
+                <h4>Enter Details</h4>
+                <p>Provide the client URL, brand info, or topic. For Pro tools, enter the promo code.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">3</div>
+                <h4>Get Your Report</h4>
+                <p>Results are emailed as a PDF within minutes — ready for client reviews and presentations.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<footer class="footer">
+    <p>Powered by <a href="https://soaraiusa.com">SoarAI</a></p>
+    <p style="margin-top: 8px;"><a href="https://soaraiusa.com/privacy-policy.html">Privacy</a> &middot; <a href="https://soaraiusa.com/terms-of-service.html">Terms</a></p>
+</footer>
+
+<script>
+function copyCode() {
+    navigator.clipboard.writeText('CROSSMEDIA2025').then(() => {
+        const hint = document.getElementById('copyHint');
+        hint.textContent = 'Copied!';
+        hint.style.color = '#059669';
+        setTimeout(() => {
+            hint.textContent = 'Click to copy';
+            hint.style.color = '#a78bfa';
+        }, 2000);
+    });
+}
+</script>
+</body>
+</html>

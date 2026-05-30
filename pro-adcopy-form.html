@@ -218,8 +218,10 @@
     </div>
 
     <script>
-    // Extract access token from URL
-    var _proToken = new URLSearchParams(window.location.search).get('token') || '';
+    // Extract access token and promo code from URL
+    var _params = new URLSearchParams(window.location.search);
+    var _proToken = _params.get('token') || '';
+    var _promoCode = _params.get('promo') || '';
 
     async function handleSubmit(event) {
         event.preventDefault();
@@ -242,7 +244,8 @@
             differentiators: document.getElementById('differentiators').value,
             email: document.getElementById('email').value,
             _token: _proToken,
-            source: 'soaraiusa'
+            promo_code: _promoCode,
+            source: _params.get('source') || 'soaraiusa'
         };
 
         try {
