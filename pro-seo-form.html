@@ -119,6 +119,12 @@
                     <div class="hint">We'll include competitive positioning in your report</div>
                 </div>
 
+                <div class="form-group">
+                    <label for="promoCode">Promo Code (optional)</label>
+                    <input type="text" id="promoCode" name="promoCode" placeholder="Enter promo code if you have one" style="text-transform:uppercase;">
+                    <div class="hint">Have a promo code? Enter it here for complimentary access</div>
+                </div>
+
                 <button type="submit" class="submit-btn" id="submitBtn">Generate My Pro SEO/GEO Report</button>
             </form>
 
@@ -161,7 +167,7 @@
             email: document.getElementById('email').value,
             competitors: document.getElementById('competitors').value,
             _token: _proToken,
-            promo_code: _promoCode,
+            promo_code: document.getElementById('promoCode').value.trim() || _promoCode,
             source: _params.get('source') || 'soaraiusa'
         };
 
