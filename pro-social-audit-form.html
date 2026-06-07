@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro Social Content Audit - SoarAI</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QWQE67FWT0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-QWQE67FWT0');
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; }
+
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d1b69 50%, #6333CC 100%);
+            color: white; padding: 60px 20px; text-align: center; position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at top right, rgba(99, 51, 204, 0.15), transparent);
+            pointer-events: none;
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+        .hero h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 12px; }
+        .hero p { font-size: 1.05rem; opacity: 0.9; }
+        .pro-badge {
+            display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+            padding: 4px 16px; border-radius: 100px; font-size: 0.8rem; font-weight: 700;
+            letter-spacing: 1px; margin-bottom: 16px;
+        }
+
+        .container { max-width: 640px; margin: -40px auto 60px; padding: 0 20px; position: relative; z-index: 10; }
+
+        .form-card {
+            background: white; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            padding: 40px; border-top: 4px solid #6333CC;
+        }
+        .form-card h2 { font-size: 1.4rem; margin-bottom: 4px; color: #0f172a; }
+        .subtitle { color: #64748b; font-size: 0.95rem; margin-bottom: 28px; }
+
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-weight: 500; margin-bottom: 6px; color: #0f172a; font-size: 0.92rem; }
+        input[type="text"], input[type="email"], input[type="url"], textarea, select {
+            width: 100%; padding: 11px 14px; border: 1.5px solid #e2e8f0; border-radius: 8px;
+            font-family: 'Inter', sans-serif; font-size: 0.92rem; color: #0f172a; transition: all 0.2s;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none; border-color: #6333CC; box-shadow: 0 0 0 3px rgba(99,51,204,0.1);
+        }
+        textarea { resize: vertical; min-height: 80px; }
+        select {
+            appearance: none; background-color: white;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23475569' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px;
+        }
+        .hint { font-size: 0.8rem; color: #94a3b8; margin-top: 4px; }
+
+        .submit-btn {
+            width: 100%; padding: 14px; background: linear-gradient(135deg, #6333CC, #4f25a3);
+            color: white; border: none; border-radius: 8px; font-family: 'Inter', sans-serif;
+            font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-top: 8px;
+        }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 16px rgba(99,51,204,0.3); }
+        .submit-btn:disabled { background: #94a3b8; cursor: not-allowed; transform: none; box-shadow: none; }
+
+        .features { margin-top: 32px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+        .features h3 { font-size: 1rem; color: #0f172a; margin-bottom: 12px; }
+        .features ul { list-style: none; padding: 0; }
+        .features li { padding: 6px 0; font-size: 0.9rem; color: #475569; }
+        .features li::before { content: '\2713 '; color: #6333CC; font-weight: 700; margin-right: 8px; }
+
+        .success-message { display: none; text-align: center; padding: 60px 24px; }
+
+        @media (max-width: 640px) {
+            .hero { padding: 40px 16px; }
+            .hero h1 { font-size: 1.6rem; }
+            .form-card { padding: 28px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <div class="pro-badge">PRO</div>
+            <h1>Pro Social Content Audit</h1>
+            <p>Comprehensive social media audit across all major platforms with competitor benchmarking, content calendar, and strategic playbook.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="form-card" id="formCard">
+            <h2>Start Your Pro Social Audit</h2>
+            <p class="subtitle">Complete the form below — your comprehensive audit report will be emailed as a PDF</p>
+
+            <form id="proSocialAuditForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="brandName">Brand / Company Name *</label>
+                    <input type="text" id="brandName" name="brandName" placeholder="Your brand name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="websiteUrl">Website URL *</label>
+                    <input type="url" id="websiteUrl" name="websiteUrl" placeholder="https://example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="industry">Industry *</label>
+                    <select id="industry" name="industry" required>
+                        <option value="">Select an industry...</option>
+                        <option value="SaaS / Technology">SaaS / Technology</option>
+                        <option value="E-commerce / DTC">E-commerce / DTC</option>
+                        <option value="Financial Services">Financial Services</option>
+                        <option value="Healthcare / Wellness">Healthcare / Wellness</option>
+                        <option value="Education / Coaching">Education / Coaching</option>
+                        <option value="Professional Services">Professional Services</option>
+                        <option value="Real Estate">Real Estate</option>
+                        <option value="Food & Beverage">Food & Beverage</option>
+                        <option value="Travel & Hospitality">Travel & Hospitality</option>
+                        <option value="Fashion & Beauty">Fashion & Beauty</option>
+                        <option value="Fitness & Sports">Fitness & Sports</option>
+                        <option value="Nonprofit">Nonprofit</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="targetAudience">Target Audience *</label>
+                    <textarea id="targetAudience" name="targetAudience" required placeholder="Demographics, interests, pain points..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="socialGoal">Primary Social Goal *</label>
+                    <select id="socialGoal" name="socialGoal" required>
+                        <option value="">Select your primary goal...</option>
+                        <option value="Brand Awareness">Brand Awareness</option>
+                        <option value="Lead Generation">Lead Generation</option>
+                        <option value="Community Building">Community Building</option>
+                        <option value="Thought Leadership">Thought Leadership</option>
+                        <option value="Sales & Conversions">Sales & Conversions</option>
+                        <option value="Content Marketing">Content Marketing</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="competitorHandles">Competitor Social Handles (optional)</label>
+                    <input type="text" id="competitorHandles" name="competitorHandles" placeholder="@competitor1, @competitor2">
+                    <div class="hint">We'll benchmark your presence against these competitors</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" placeholder="you@company.com" required>
+                    <div class="hint">Your Pro audit report will be emailed here as a PDF</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="promoCode">Promo Code (optional)</label>
+                    <input type="text" id="promoCode" name="promoCode" placeholder="Enter promo code if you have one" style="text-transform:uppercase;">
+                    <div class="hint">Have a promo code? Enter it here for complimentary access</div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">Generate Pro Social Audit</button>
+            </form>
+
+            <div class="features">
+                <h3>Your Pro Social Audit includes:</h3>
+                <ul>
+                    <li>Full audit across Instagram, LinkedIn, X, TikTok, and Facebook</li>
+                    <li>Competitor benchmarking and gap analysis</li>
+                    <li>Content performance breakdown by format and topic</li>
+                    <li>30-day strategic content calendar</li>
+                    <li>Platform-specific optimization recommendations</li>
+                    <li>Engagement rate analysis and growth opportunities</li>
+                    <li>Audience sentiment and demographic insights</li>
+                    <li>Strategic playbook with actionable next steps</li>
+                    <li>KPI targets and measurement framework</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="success-message" id="successMessage"></div>
+    </div>
+
+    <script>
+    var _params = new URLSearchParams(window.location.search);
+    var _proToken = _params.get('token') || '';
+    var _promoCode = _params.get('promo') || '';
+
+    // Pre-fill promo code from URL if present
+    if (_promoCode) {
+        document.getElementById('promoCode').value = _promoCode;
+    }
+
+    async function handleSubmit(event) {
+        event.preventDefault();
+        var btn = document.getElementById('submitBtn');
+        var formCard = document.getElementById('formCard');
+        var successMsg = document.getElementById('successMessage');
+
+        btn.disabled = true;
+        btn.textContent = 'Generating Pro Social Audit...';
+
+        var payload = {
+            brand_name: document.getElementById('brandName').value,
+            website_url: document.getElementById('websiteUrl').value,
+            industry: document.getElementById('industry').value,
+            target_audience: document.getElementById('targetAudience').value,
+            social_goal: document.getElementById('socialGoal').value,
+            competitor_handles: document.getElementById('competitorHandles').value,
+            email: document.getElementById('email').value,
+            client_email: document.getElementById('email').value,
+            _token: _proToken,
+            promo_code: document.getElementById('promoCode').value.trim() || _promoCode,
+            source: _params.get('source') || 'soaraiusa'
+        };
+
+        try {
+            var response = await fetch('https://soarai.in/api/pro/social-audit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            var data = await response.json();
+
+            if (data.status === 'success') {
+                formCard.style.display = 'none';
+                successMsg.style.display = 'block';
+                successMsg.innerHTML = '<div style="font-size:3rem;margin-bottom:1rem;">&#9989;</div>'
+                    + '<h2 style="color:#6333CC;font-size:1.6rem;margin-bottom:1rem;">Pro Social Audit Started!</h2>'
+                    + '<p style="color:#64748b;font-size:1.05rem;line-height:1.7;">Our AI is conducting a comprehensive audit of your social presence across all major platforms.</p>'
+                    + '<p style="color:#64748b;font-size:1.05rem;line-height:1.7;margin-top:0.5rem;">Your Pro audit report will be emailed to <strong>' + payload.email + '</strong> within 5-10 minutes.</p>'
+                    + '<div style="margin-top:2rem;padding:1rem;background:#fffbeb;border-radius:0.5rem;font-size:0.9rem;color:#92400e;">'
+                    + 'Check your spam/promotions folder if you don\'t see it. The email comes from <strong>noreply@soarai.in</strong>'
+                    + '</div>'
+                    + '<p style="margin-top:2rem;"><a href="/proservice.html" style="color:#6333CC;font-weight:600;">Back to Tools</a></p>';
+            } else {
+                btn.disabled = false;
+                btn.textContent = 'Generate Pro Social Audit';
+                alert('Error: ' + (data.error || 'Something went wrong. Please try again.'));
+            }
+        } catch (err) {
+            btn.disabled = false;
+            btn.textContent = 'Generate Pro Social Audit';
+            alert('Network error. Please try again.');
+        }
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI Social Content Audit - Get a comprehensive audit of your social media presence across 2 platforms">
+    <title>AI Social Content Audit - Comprehensive Social Media Analysis</title>
+    <link rel="canonical" href="https://soaraiusa.com/social-audit-form.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #3730a3 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at top right, rgba(124, 58, 237, 0.1), transparent),
+                        radial-gradient(circle at bottom left, rgba(37, 99, 235, 0.1), transparent);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            opacity: 0.95;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-item { text-align: center; }
+        .stat-item p { font-size: 0.95rem; opacity: 0.85; margin: 0; }
+
+        @media (max-width: 768px) {
+            .hero { padding: 60px 20px; }
+            .stats-row { gap: 24px; margin-top: 40px; padding-top: 24px; }
+            .stat-item p { font-size: 0.85rem; }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 600px;
+            margin: -60px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Form Card */
+        .form-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+            padding: 48px;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .form-card { padding: 32px 24px; }
+            .container { margin: -40px auto 40px; }
+        }
+
+        /* Progress Indicator */
+        .progress-container { margin-bottom: 48px; }
+
+        .progress-bar-wrapper {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+            gap: 12px;
+        }
+
+        .progress-step {
+            flex: 1;
+            height: 4px;
+            background: #e2e8f0;
+            border-radius: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-step.active { background: #2563eb; }
+        .progress-step.completed { background: #10b981; }
+
+        .progress-text {
+            font-size: 0.875rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .progress-text strong { color: #2563eb; }
+
+        /* Form Steps */
+        .form-step {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .form-step.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-step h2 {
+            font-size: 1.75rem;
+            margin-bottom: 8px;
+            color: #0f172a;
+        }
+
+        .form-step-description {
+            color: #64748b;
+            margin-bottom: 32px;
+            font-size: 0.95rem;
+        }
+
+        /* Form Groups */
+        .form-group { margin-bottom: 24px; }
+        .form-group:last-child { margin-bottom: 0; }
+
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #0f172a;
+            font-size: 0.95rem;
+        }
+
+        .required::after { content: ' *'; color: #ef4444; }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="url"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: #0f172a;
+            transition: all 0.2s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            background: #f0f9ff;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+            line-height: 1.5;
+        }
+
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23475569' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 36px;
+            background-color: white;
+        }
+
+        /* Review Section */
+        .review-section {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            border: 1.5px solid #e2e8f0;
+        }
+
+        .review-section h3 {
+            font-size: 1rem;
+            margin-bottom: 16px;
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        .review-item {
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #cbd5e1;
+        }
+
+        .review-item:last-child {
+            margin-bottom: 0; padding-bottom: 0; border-bottom: none;
+        }
+
+        .review-label {
+            font-weight: 600;
+            color: #64748b;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .review-value {
+            color: #0f172a;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        /* Agreement */
+        .agreement-wrapper {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+        }
+
+        .agreement-wrapper .checkbox-item {
+            background: transparent; border: none; padding: 0; margin: 0;
+        }
+
+        .agreement-wrapper .checkbox-item:hover {
+            background: transparent; border: none;
+        }
+
+        .agreement-wrapper label {
+            margin: 0; font-size: 0.9rem; color: #92400e;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px; height: 18px;
+            cursor: pointer;
+            accent-color: #2563eb;
+            flex-shrink: 0;
+        }
+
+        .checkbox-label {
+            margin: 0;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        /* Buttons */
+        .form-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 40px;
+        }
+
+        button {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            min-width: 120px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white;
+            flex: 1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:active { transform: translateY(0); }
+
+        .btn-primary:disabled {
+            opacity: 0.6; cursor: not-allowed; transform: none;
+        }
+
+        .btn-secondary { background: #e2e8f0; color: #0f172a; }
+        .btn-secondary:hover { background: #cbd5e1; }
+
+        /* Loading State */
+        .btn-loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .spinner {
+            width: 16px; height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            padding: 48px;
+            text-align: center;
+            max-width: 400px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #0f172a;
+        }
+
+        .modal-message {
+            font-size: 1rem;
+            color: #64748b;
+            margin-bottom: 32px;
+            min-height: 40px;
+            line-height: 1.5;
+        }
+
+        .modal-spinner {
+            width: 60px; height: 60px;
+            border: 4px solid #e2e8f0;
+            border-top-color: #2563eb;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 24px;
+        }
+
+        /* Error */
+        .error-message {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 12px 14px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+            border-left: 4px solid #ef4444;
+        }
+
+        .field-error { border-color: #ef4444 !important; }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .hero { padding: 50px 16px; }
+            .hero h1 { font-size: 1.75rem; }
+            .hero p { font-size: 1rem; }
+            .form-card { padding: 24px 16px; border-radius: 12px; }
+            .form-step h2 { font-size: 1.5rem; }
+            .form-actions { flex-direction: column-reverse; }
+            .btn-primary, .btn-secondary { width: 100%; min-width: auto; }
+            .modal-content { padding: 36px 24px; }
+        }
+
+        .hidden { display: none !important; }
+
+        /* Helper text */
+        .helper-text {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-top: 6px;
+        }
+    </style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SRZ8MY7SL6"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SRZ8MY7SL6');
+</script>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>AI Social Content Audit</h1>
+            <p>Get a comprehensive audit of your social media presence &mdash; profile completeness, content quality, and engagement analysis across 2 platforms.</p>
+            <div class="stats-row">
+                <div class="stat-item">
+                    <p><strong>2 Platforms Audited</strong></p>
+                </div>
+                <div class="stat-item">
+                    <p><strong>Profile + Content Analysis</strong></p>
+                </div>
+                <div class="stat-item">
+                    <p><strong>PDF Report Emailed</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Form Container -->
+    <div class="container">
+        <div class="form-card">
+            <!-- Progress Indicator -->
+            <div class="progress-container">
+                <div class="progress-bar-wrapper">
+                    <div class="progress-step active" id="progress-step-1"></div>
+                    <div class="progress-step" id="progress-step-2"></div>
+                </div>
+                <div class="progress-text">Step <strong id="current-step">1</strong> of 2</div>
+            </div>
+
+            <!-- Form -->
+            <form id="intakeForm">
+                <!-- Step 1: Brand & Social Presence -->
+                <div class="form-step active" id="step-1">
+                    <h2>Brand & Social Presence</h2>
+                    <p class="form-step-description">Tell us about your brand and online presence</p>
+
+                    <div class="form-group">
+                        <label for="brandName" class="required">Brand / Company Name</label>
+                        <input type="text" id="brandName" name="brandName" required placeholder="Your brand name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="websiteUrl" class="required">Website URL</label>
+                        <input type="url" id="websiteUrl" name="websiteUrl" required placeholder="https://example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="industry" class="required">Industry</label>
+                        <select id="industry" name="industry" required>
+                            <option value="">Select an industry...</option>
+                            <option value="SaaS / Technology">SaaS / Technology</option>
+                            <option value="E-commerce / DTC">E-commerce / DTC</option>
+                            <option value="Financial Services">Financial Services</option>
+                            <option value="Healthcare / Wellness">Healthcare / Wellness</option>
+                            <option value="Education / Coaching">Education / Coaching</option>
+                            <option value="Professional Services">Professional Services</option>
+                            <option value="Real Estate">Real Estate</option>
+                            <option value="Food & Beverage">Food & Beverage</option>
+                            <option value="Travel & Hospitality">Travel & Hospitality</option>
+                            <option value="Fashion & Beauty">Fashion & Beauty</option>
+                            <option value="Fitness & Sports">Fitness & Sports</option>
+                            <option value="Nonprofit">Nonprofit</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="targetAudience" class="required">Target Audience</label>
+                        <textarea id="targetAudience" name="targetAudience" required placeholder="Who are you trying to reach? Demographics, interests, pain points..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Step 2: Review & Generate -->
+                <div class="form-step" id="step-2">
+                    <h2>Review & Generate</h2>
+                    <p class="form-step-description">Confirm your details and get your social audit</p>
+
+                    <div class="review-section" id="reviewContent">
+                        <!-- Populated by JS -->
+                    </div>
+
+                    <div class="form-group">
+                        <label for="emailAddress" class="required">Email Address</label>
+                        <input type="email" id="emailAddress" name="emailAddress" required placeholder="your@email.com">
+                        <p class="helper-text">We'll email your social content audit as a PDF</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fullName">Your Name</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Your name">
+                    </div>
+
+                    <div class="agreement-wrapper">
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="agreeTerms" name="agreeTerms">
+                            <span class="checkbox-label" style="color: #92400e;">I agree to receive my social content audit via email. No spam, ever.</span>
+                        </label>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Navigation Buttons -->
+            <div class="form-actions">
+                <button type="button" class="btn-secondary" id="prevBtn" style="display:none" onclick="prevStep()">Back</button>
+                <button type="button" class="btn-primary" id="nextBtn" onclick="nextStep()">Continue &rarr;</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Processing Modal -->
+    <div class="modal" id="processingModal">
+        <div class="modal-content">
+            <div class="modal-spinner"></div>
+            <div class="modal-title">Generating Your Social Audit</div>
+            <div class="modal-message" id="processingMessage">Scanning your website...</div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div style="font-size:60px;margin-bottom:20px;">&#9993;</div>
+            <div class="modal-title">Social Audit Being Generated!</div>
+            <div class="modal-message">Your social content audit will be emailed to you within a few minutes.</div>
+            <button onclick="location.reload()" class="btn-primary" style="width:100%;">Run Another Audit</button>
+        </div>
+    </div>
+
+    <script>
+        // ---- Configuration ----
+        const API_URL = 'https://soarai.in/api/social-audit/generate';
+        const totalSteps = 2;
+        let currentStep = 1;
+        let formData = { step1: {}, step2: {} };
+
+        const processingMessages = [
+            'Scanning your website...',
+            'Analyzing social media profiles...',
+            'Evaluating content strategy...',
+            'Scoring engagement patterns...',
+            'Building your audit report...',
+            'Almost there...'
+        ];
+
+        let currentMessageIndex = 0;
+
+        // ---- Step Navigation ----
+        function nextStep() {
+            if (currentStep === totalSteps) {
+                submitForm();
+                return;
+            }
+
+            if (!validateStep(currentStep)) return;
+            saveStepData(currentStep);
+
+            currentStep++;
+            updateStepVisibility();
+            updateProgressBar();
+            updateButtonStates();
+
+            if (currentStep === totalSteps) {
+                populateReview();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep <= 1) return;
+            saveStepData(currentStep);
+            currentStep--;
+            updateStepVisibility();
+            updateProgressBar();
+            updateButtonStates();
+        }
+
+        function updateStepVisibility() {
+            document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
+            document.getElementById('step-' + currentStep).classList.add('active');
+        }
+
+        function updateProgressBar() {
+            for (let i = 1; i <= totalSteps; i++) {
+                const step = document.getElementById('progress-step-' + i);
+                step.classList.remove('active', 'completed');
+                if (i < currentStep) step.classList.add('completed');
+                if (i === currentStep) step.classList.add('active');
+            }
+            document.getElementById('current-step').textContent = currentStep;
+        }
+
+        function updateButtonStates() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            prevBtn.style.display = currentStep > 1 ? 'block' : 'none';
+            nextBtn.innerHTML = currentStep === totalSteps
+                ? '<span class="btn-loading">Audit My Social Presence</span>'
+                : 'Continue &rarr;';
+        }
+
+        // ---- Validation ----
+        function validateStep(step) {
+            clearErrors();
+            let valid = true;
+
+            if (step === 1) {
+                if (!val('brandName')) valid = markError('brandName', 'Brand name is required');
+                if (!val('websiteUrl')) valid = markError('websiteUrl', 'Website URL is required');
+                const urlEl = document.getElementById('websiteUrl');
+                if (urlEl.value && !urlEl.value.match(/^https?:\/\/.+\..+/)) {
+                    valid = markError('websiteUrl', 'Please enter a valid URL (e.g., https://example.com)');
+                }
+                if (!val('industry')) valid = markError('industry', 'Please select an industry');
+                if (!val('targetAudience')) valid = markError('targetAudience', 'Target audience is required');
+            }
+
+            if (step === 2) {
+                if (!val('emailAddress')) valid = markError('emailAddress', 'Email is required');
+                const emailEl = document.getElementById('emailAddress');
+                if (emailEl.value && !emailEl.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                    valid = markError('emailAddress', 'Please enter a valid email');
+                }
+                if (!document.getElementById('agreeTerms').checked) {
+                    valid = false;
+                    showError('Please agree to receive your audit report');
+                }
+            }
+
+            return valid;
+        }
+
+        function val(id) {
+            const el = document.getElementById(id);
+            return el && el.value.trim();
+        }
+
+        function markError(id, msg) {
+            document.getElementById(id).classList.add('field-error');
+            showError(msg);
+            return false;
+        }
+
+        function showError(msg) {
+            let errDiv = document.querySelector('.error-message');
+            if (!errDiv) {
+                errDiv = document.createElement('div');
+                errDiv.className = 'error-message';
+                const activeStep = document.querySelector('.form-step.active');
+                activeStep.insertBefore(errDiv, activeStep.firstChild);
+            }
+            errDiv.textContent = msg;
+        }
+
+        function clearErrors() {
+            document.querySelectorAll('.error-message').forEach(e => e.remove());
+            document.querySelectorAll('.field-error').forEach(e => e.classList.remove('field-error'));
+        }
+
+        // ---- Data Handling ----
+        function saveStepData(step) {
+            if (step === 1) {
+                formData.step1 = {
+                    brandName: val('brandName'),
+                    websiteUrl: val('websiteUrl'),
+                    industry: val('industry'),
+                    targetAudience: val('targetAudience')
+                };
+            } else if (step === 2) {
+                formData.step2 = {
+                    emailAddress: val('emailAddress'),
+                    fullName: val('fullName') || ''
+                };
+            }
+        }
+
+        // ---- Review ----
+        function populateReview() {
+            const s1 = formData.step1;
+
+            document.getElementById('reviewContent').innerHTML = `
+                <h3>Brand & Social Presence</h3>
+                <div class="review-item">
+                    <div class="review-label">Brand</div>
+                    <div class="review-value">${esc(s1.brandName)}</div>
+                </div>
+                <div class="review-item">
+                    <div class="review-label">Website</div>
+                    <div class="review-value">${esc(s1.websiteUrl)}</div>
+                </div>
+                <div class="review-item">
+                    <div class="review-label">Industry</div>
+                    <div class="review-value">${esc(s1.industry)}</div>
+                </div>
+                <div class="review-item">
+                    <div class="review-label">Target Audience</div>
+                    <div class="review-value">${esc(s1.targetAudience)}</div>
+                </div>
+            `;
+        }
+
+        function esc(str) {
+            const d = document.createElement('div');
+            d.textContent = str || '';
+            return d.innerHTML;
+        }
+
+        // ---- Submit ----
+        async function submitForm() {
+            saveStepData(2);
+            if (!validateStep(2)) return;
+
+            const nextBtn = document.getElementById('nextBtn');
+            nextBtn.disabled = true;
+            showProcessingModal();
+
+            const apiPayload = {
+                brand_name: formData.step1.brandName,
+                website_url: formData.step1.websiteUrl,
+                industry: formData.step1.industry,
+                target_audience: formData.step1.targetAudience,
+                client_email: formData.step2.emailAddress,
+                client_name: formData.step2.fullName,
+                source: 'web'
+            };
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(apiPayload)
+                });
+
+                if (!response.ok) {
+                    const errData = await response.json().catch(() => ({}));
+                    throw new Error(errData.error || 'HTTP error ' + response.status);
+                }
+
+                const result = await response.json();
+                closeProcessingModal();
+
+                if (result.status === 'success') {
+                    const modal = document.getElementById('successModal');
+                    modal.querySelector('.modal-message').textContent =
+                        result.message || 'Your social content audit will be emailed to you within a few minutes.';
+                    modal.classList.add('active');
+                    return;
+                }
+
+                showError('Unexpected response from server');
+                nextBtn.disabled = false;
+
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                closeProcessingModal();
+                showError('Error: ' + error.message);
+                nextBtn.disabled = false;
+            }
+        }
+
+        function showProcessingModal() {
+            const modal = document.getElementById('processingModal');
+            modal.classList.add('active');
+            currentMessageIndex = 0;
+            const interval = setInterval(() => {
+                if (currentMessageIndex < processingMessages.length) {
+                    document.getElementById('processingMessage').textContent = processingMessages[currentMessageIndex];
+                    currentMessageIndex++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 1500);
+        }
+
+        function closeProcessingModal() {
+            document.getElementById('processingModal').classList.remove('active');
+        }
+    </script>
+</body>
+</html>
